@@ -1,0 +1,2483 @@
+//■■■■■■■■■■■■■■■■■■■■■■■■//
+//                    初期設定                    //
+//■■■■■■■■■■■■■■■■■■■■■■■■//
+
+    //reset_css
+    *{box-sizing:border-box}::before,::after{box-sizing:inherit}html{line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}body{margin:0}main{display:block}p,table,blockquote,address,pre,iframe,form,figure,dl{margin:0}h1,h2,h3,h4,h5,h6{font-size:inherit;line-height:inherit;font-weight:inherit;margin:0}ul,ol{margin:0;padding:0;list-style:none}dt{font-weight:bold}dd{margin-left:0}hr{box-sizing:content-box;height:0;overflow:visible;border:0;border-top:1px solid;margin:0;clear:both;color:inherit}pre{font-family:monospace,monospace;font-size:inherit}address{font-style:inherit}a{background-color:transparent;text-decoration:none;color:inherit}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:inherit}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none;vertical-align:bottom}embed,object,iframe{border:0;vertical-align:bottom}button,input,optgroup,select,textarea{/*-webkit-appearance:none;appearance:none;*/vertical-align:middle;color:inherit;font:inherit;border:0;background:transparent;padding:0;margin:0;outline:0;border-radius:0;text-align:inherit}[type="checkbox"]{-webkit-appearance:checkbox;appearance:checkbox}[type="radio"]{-webkit-appearance:radio;appearance:radio}button,input{overflow:visible}button,select{text-transform:none}button,[type="button"],[type="reset"],[type="submit"]{cursor:pointer;-webkit-appearance:none;appearance:none}button[disabled],[type="button"][disabled],[type="reset"][disabled],[type="submit"][disabled]{cursor:default}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring{outline:1px dotted ButtonText}/*select::-ms-expand{display:none}*/option{padding:0}fieldset{margin:0;padding:0;border:0;min-width:0}legend{color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto}[type="search"]{outline-offset:-2px}[type="search"]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}label[for]{cursor:pointer}details{display:block}summary{display:list-item}[contenteditable]{outline:none}table{border-collapse:collapse;border-spacing:0}caption{text-align:left}td,th{vertical-align:top;padding:0}th{text-align:left;font-weight:bold}template{display:none}[hidden]{display:none}
+    input{-webkit-appearance:none;}
+
+    //メディアクエリの設定
+    @mixin mq() {
+        @media screen and (min-width: 769px) {
+            @content;
+        }
+    }
+
+    //基本タグ設定
+    html {
+        height: 100%;
+        background-color: #eee;
+        font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
+        font-feature-settings: "palt";
+        overflow-y: scroll;
+    }
+    body {
+        min-height: 100vh;
+        position: relative;
+        @include mq() {
+            width: 1160px;
+            margin: 0 auto;
+        }
+    }
+    img {
+        width: 100%;
+        display: block;
+        vertical-align: top;
+    }
+    a {
+        color: initial;
+        text-decoration: none;
+    }
+
+    //変数設定
+    $bg-black: #444;
+    $bg-gray:  #eee;
+    $color-white: #fff;
+    $color-black: #222;
+    $sidebar_size: 320px;
+
+    //sp-pc切り替え用
+    .sp-only {display: block!important;}
+    .sp-inline {display: inline!important;}
+    .sp-flex {display: flex!important;}
+    .sp-table-row {display: table-row!important;}
+    .pc-only {display: none!important;}
+    .pc-inline {display: none!important;}
+    .pc-flex {display: none!important;}
+    .pc-br { display:none; }
+    .sp-br { display:block; }
+    @include mq() {
+        .sp-only { display: none!important;}
+        .sp-inline { display: none!important;}
+        .sp-flex { display: none!important;}
+        .sp-table-row {display: none!important;}
+        .pc-only { display: block!important;}
+        .pc-inline { display: inline!important;}
+        .pc-flex { display: flex!important;}
+        .pc-br { display:block; }
+        .sp-br { display:none; }
+    }
+
+    //ボタンの色とサイズ
+    .standard_button {
+        cursor: pointer;
+        padding: 12px 8px;
+        border: none;
+        outline: none;
+        font-size: 15px;
+        text-align: center;
+        border-radius: 8px;
+        transition-duration: 0.4s;
+        @include mq() {
+            padding: 12px 6px;
+            font-size: 16px;
+            border-radius: 10px;
+        }
+    }
+    .btn_purple {
+        color: #fff;
+        background-color: #8461a7;
+        border: solid 2px #8461a7;
+        &:hover {
+            color: #8461a7;
+            background-color: #eee;
+        }
+    }
+    .btn_red {
+        color: #fff;
+        background-color: #f00;
+        border: solid 2px #f00;
+        &:hover {
+            color: #f00;
+            background-color: #eee;
+        }
+    }
+    .btn_blue {
+        color: #fff;
+        background-color: #424be4;
+        border: solid 2px #424be4;
+        &:hover {
+            color: #424be4;
+            background-color: #eee;
+        }
+    }
+    .btn_green {
+        color: #fff;
+        background-color: #00c14d;
+        border: solid 2px #00c14d;
+        &:hover {
+            color: #00c14d;
+            background-color: #eee;
+        }
+    }
+    .btn_gray {
+        color: #fff;
+        background-color: #444;
+        border: solid 2px #444;
+        &:hover {
+            color: #444;
+            background-color: #fff;
+        }
+    }
+    .btn_bold {
+        font-weight: bold;
+    }
+
+    //画面を暗くする
+    .black-back {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        background-color: rgba(0, 0, 0, 0.75);
+    }
+
+    //地の色とサイズ
+    .bg_sp_b_pc_b { background-color: #444; color: #fff; &:hover{background-color: #448;}}
+    .bg_sp_b_pc_w { background-color: #444; color: #fff; &:hover{background-color: #448;}}
+    .bg_sp_w_pc_b { background-color: #fff; color: #222; &:hover{background-color: #bfd;}}
+    .bg_sp_w_pc_w { background-color: #fff; color: #222; &:hover{background-color: #bfd;}}
+    @include mq() {
+        .bg_sp_b_pc_b { background-color: #444; color: #fff; &:hover{background-color: #448;}}
+        .bg_sp_b_pc_w { background-color: #fff; color: #222; &:hover{background-color: #bfd;}}
+        .bg_sp_w_pc_b { background-color: #444; color: #fff; &:hover{background-color: #448;}}
+        .bg_sp_w_pc_w { background-color: #fff; color: #222; &:hover{background-color: #bfd;}}
+    }
+
+
+//■■■■■■■■■■■■■■■■■■■■■■■■//
+//                  全ページ共通                  //
+//■■■■■■■■■■■■■■■■■■■■■■■■//
+
+
+    ////////////////////////////////////////////
+    //                全体設定                //
+    ////////////////////////////////////////////
+    .main {
+        position: relative;
+        @include mq() {
+            padding-left: $sidebar_size;
+        }
+    }
+    .main-content {
+        width: 92%;
+        margin: 0 auto;
+        padding: 0 0 240px;
+        @include mq() {
+            margin: 0 0 64px;
+            padding: 20px 12px 40px;
+            width: 100%;
+        }
+
+        &__ad {
+            width: 100%;
+            height: auto;
+            margin: 48px auto 0;
+            @include mq() {
+                width: 728px;
+            }
+        }
+    }
+
+    //白地黒文字のテキストリンク
+    .text-link-black {
+        text-decoration: underline;
+        text-underline-position: under;
+        transition: 0.2s;
+        :hover {
+            text-shadow: 1px 1px 2px #00004060;
+            color: #22d;
+        }
+    }
+
+    //セレクトボックス内の三角マーク
+    .select-cursor {
+        position: relative;
+        // &:after {
+        //     font-family: "Font Awesome 5 Free";
+        //     font-weight: 900;
+        //     content: '\f0d7';
+        //     position: absolute;
+        //     right: 12px;
+        //     top: 6px;
+        //     pointer-events: none;
+        // }
+    }
+
+    ////////////////////////////////////////////
+    //             パンくずリスト             //
+    ////////////////////////////////////////////
+    .breadcrumbs {
+        display: flex;
+        justify-content:space-between;
+        width: 100%;
+        height: 36px;
+        padding: 3px 2px;
+        background-color: $bg-black;
+        @include mq() {
+            position: relative;
+            width: 100%;
+            padding: 12px 10px 6px;
+            background-color: $bg-gray;
+        }
+
+        &__list {
+            width: calc(100% - 48px);
+            box-sizing: border-box;
+            font-size: 14px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        &__here {
+            color: #ddd;
+            position: relative;
+            left: 14px;
+            @include mq() {
+                color: #333;
+                left: 0;
+                bottom: 1px;
+            }
+        }
+
+        & img {
+            display: inline;
+            width: 13px;
+        }
+
+        & a {
+            color: $color-white;
+            font-weight: bold;
+            @include mq() {
+                color: $color-black;
+            }
+        }
+    }
+
+
+    ////////////////////////////////////////////
+    //             ドロワーボタン             //
+    ////////////////////////////////////////////
+    .drawer-icon {
+        position: absolute;
+        z-index: 30;
+        top: 4px;
+        right: 6px;
+        width: 32px;
+        padding: 0 4px;
+        text-align: center;
+        color: $color-white;
+        font-size: 28px;
+        @include mq() {
+            display: none!important;
+        }
+    }
+
+
+    ////////////////////////////////////////////
+    //             ナビゲーション             //
+    ////////////////////////////////////////////
+    .navi {
+        position: fixed;
+        right: 0;
+        height: 100%;
+        max-height: 100%;
+        width: 332px;
+        max-width: 100%;
+        padding: 32px 0 0;
+        z-index: 30;
+        background-color: #202020d0;
+        color: #fff;
+        transition: all 0.4s cubic-bezier(0.6, 0, 0.4, 1);
+        @include mq() {
+            left: 0;
+            width: $sidebar_size;
+            padding: 16px 2px;
+            background: linear-gradient(#5d325c, #06040c);
+            box-shadow: 2px 2px 12px #1d2b1b80;
+            transition: all 0s; //画面サイズ変更時の動きをスムーズにするため
+            z-index: 20;
+        }
+
+        &__ad {
+            @include mq() {
+                width: 300px;
+                height: 250px;
+                margin: 0 8px 24px;
+            }
+        }
+
+        &__back {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #00000080;
+            @include mq() {
+                display: none!important;
+            }
+        }
+
+        &__hidden {
+            right: -332px;
+        }
+
+        &__inner {
+            height: calc(100% - 8px);
+            overflow: hidden;
+            @include mq() {
+                height: calc(100% - 164px);
+            }
+        }
+
+        &__logo {
+            margin: 8px auto 0px;
+            width: 72%;
+            max-width: 224px;
+            display: block;
+            transition: 0.4s;
+            &:hover {
+                transform: scale(1.1);
+                opacity: 0.75;
+            }
+            @include mq() {
+                display: block;
+                width: 240px;
+                max-width: 240px;
+                height: 112px;
+                margin: 24px auto 16px;
+            }
+        }
+
+        &__menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 360px;
+            margin: 0 auto;
+            padding: 16px 14px 0;
+            @include mq() {
+                padding: 8px 14px 0;
+                max-width: 304px;
+            }
+
+            & a {
+                display: block;
+                border: solid 1px #fff;
+                color: #fff;
+                padding: 10px 0;
+                width: 30%;
+                margin: 6px 2px;
+                border-radius: 6px;
+                text-align: center;
+                font-size: 12px;
+                white-space: nowrap;
+                overflow: hidden;
+                box-shadow: 0px 0px 2px;
+                transition: 0.4s;
+                transform: translate3d(0,0,0);
+                @include mq() {
+                    padding: 15px 0;
+                    height: 80px;
+                    font-size: 13px;
+                }
+                &:hover {
+                    transform: scale(1.1);
+                    background-color: #fff;
+                    color: $color-black;
+                    @include mq() {
+                        color: #442545;
+                        transform: scale(1.15);
+                    }
+                }
+            }
+
+            & span {
+                display: block;
+                height: 32px;
+                font-size: 28px;
+                margin-bottom: 4px;
+            }
+        }
+    }
+
+
+    ////////////////////////////////////////////
+    //            人気の検索ワード            //
+    ////////////////////////////////////////////
+    .trend-words {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 14px 14px 0;
+        @include mq() {
+            width: 96%;
+            margin: 12px auto 0;
+            padding: 18px 14px 0;
+        }
+
+        & p {
+            width: 100%;
+            text-align: center;
+            margin: 2px 0 2px;
+            @include mq() {
+                margin: 0 0 8px;
+                color: #fff;
+            }
+        }
+
+        & a {
+            display: inline-block;
+            background-color: unset;
+            max-width: 256px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            height: 26px;
+            margin: 4px 2px;
+            padding: 4px 4px;
+            border-radius: 10px;
+            transition: 0.4s;
+            transform: translate3d(0,0,0);
+            color: $color-white;
+            border: solid 1px #fff;
+            will-change: transform;
+            @include mq() {
+                padding: 4px 8px;
+                border-radius: 12px;
+            }
+            &:hover {
+                transform: scale(1.1);
+                background-color: #fff;
+                color: $color-black;
+                @include mq() {
+                    transform: scale(1.15);
+                }
+            }
+        }
+    }
+
+
+    ////////////////////////////////////////////
+    //            簡易検索ボックス            //
+    ////////////////////////////////////////////
+    .easysearch {
+        position: relative;
+        width: 92%;
+        max-width: 346px;
+        margin: 0 auto 48px;
+        @include mq() {
+            margin-bottom: 18px;
+            max-width: 512px;
+        }
+
+        & form {
+            box-sizing: border-box;
+            position: relative;
+            background-color: #eee;
+            border: 2px solid #6e617d;
+            box-shadow: 0 0 4px #653792a6;
+            padding: 3px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+            @include mq() {
+                display: flex;
+                width: 96%;
+                margin: 0 auto;
+            }
+
+            & input[type="text"] {
+                border: none;
+                height: 2.0em;
+                font-size: 15px;
+                width: 85%;
+                width: calc(100% - 35px);
+                background-color: #ffffff00;
+
+                &:focus {
+                    outline: 0;
+                }
+            }
+        }
+
+        &__submit {
+            font-family: icomoon;
+            padding: 5px 0;
+            border-radius: 8px;
+            outline: none;
+            width: 30px;
+            height: 30px;
+            @include mq() {
+                padding: 5px 5px;
+                width: 32px;
+                height: 32px;
+            }
+        }
+    }
+
+
+    ////////////////////////////////////////////
+    //             メインタイトル             //
+    ////////////////////////////////////////////
+    .maintitle {
+        position: relative;
+        margin: 0 0 20px;
+        @include mq() {
+            margin-bottom: 12px;
+        }
+
+        &__bg-top,
+        &__bg-bottom {
+            width: 100%;
+            height: 120px;
+            background-size: 208px 156px;
+            background-repeat: no-repeat;
+            background-position-y: center;
+            background-color: rgba(255, 255, 255, 0.6);
+            background-blend-mode: lighten;
+        }
+        &__bg-top {
+            animation: anime_to_right 30s linear infinite;
+        }
+        &__bg-bottom {
+            animation: anime_to_left 30s linear infinite;
+            margin-bottom: -224px;  //背景にタイトルロゴを重ねるため
+            @include mq() {
+                margin-bottom: -228px;
+            }
+        }
+
+        &__logo-sp, &__logo-pc {
+            display: block;
+            margin: 0 auto;
+            transition: 0.4s;
+            &:hover {
+                transform: scale(1.1);
+                opacity: 0.75;
+            }
+        }
+        &__logo-sp {
+            width: 312px;
+        }
+        &__logo-pc {
+            width: 354px;
+        }
+    }
+    @keyframes anime_to_right {
+        0%      { background-position-x: -1040px, -832px, -624px, -416px, -208px, 0, 208px, 416px, 624px, 832px; }
+        100%    { background-position-x: 0, 208px, 416px, 624px, 832px, 1040px, 1248px, 1456px, 1664px, 1872px;  }
+    }
+    @keyframes anime_to_left {
+        0%      { background-position-x: 0, 208px, 416px, 624px, 832px, 1040px, 1248px, 1456px, 1664px, 1872px;  }
+        100%    { background-position-x: -1040px, -832px, -624px, -416px, -208px, 0, 208px, 416px, 624px, 832px; }
+    }
+
+
+    ////////////////////////////////////////////
+    //            ページネーション            //
+    ////////////////////////////////////////////
+    .pagination {
+        display: flex;
+        width: 100%;
+        height: 0;
+        left: 0;
+        justify-content: center;
+        color: #222;
+        font-size: 16px;
+        line-height: 18px;
+        @include mq() {
+            width: 864px;
+            position: fixed;
+            bottom: 64px;
+            left: 296px;
+        }
+
+        &__link {
+            display: inline-block;
+            width: 38px;
+            height: 38px;
+            border: 1px solid #cdc;
+            margin: 0 2px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            color: #247;
+            text-decoration: none;
+            line-height: 40px;
+            box-shadow: 1px 1px 3px rgba(12, 18, 12, 0.50);
+            transition: 0.2s;
+            @include mq() {
+                position: relative;
+                bottom: 12px;
+                width: 46px;
+                height: 46px;
+                margin: 0 4px;
+                font-size: 18px;
+                line-height: 46px;
+            }
+            &:hover {
+                transform: scale(1.2, 1.2) rotate(0.001deg);
+                box-shadow: 3px 3px 4px rgba(12, 18, 12, 0.125);
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+            }
+
+            &__disabled {
+                pointer-events: none;
+                color: #888;
+                background-color: #ddd;
+                @include mq() {
+                    pointer-events: none;
+                    color: #bbb;
+                }
+            }
+        }
+    }
+    
+    .js_page_fixed {
+        position: fixed;
+        bottom: 64px;
+        -webkit-transform: translateZ(0);
+    }
+    .js_page_absolute {
+        position: absolute;
+    }
+
+
+    ////////////////////////////////////////////
+    //                フッター                //
+    ////////////////////////////////////////////
+    .footer {
+        position: absolute;
+        bottom: 0;
+        padding-top: 24px;
+        width: 100%;
+        height: 168px;
+        background-color: #444;
+        font-size: 15px;
+        text-align: center;
+        color: #fff;
+        z-index: 25;
+        @include mq() {
+            position: fixed;
+            padding-top: 0px;
+            width: $sidebar_size;
+            height: 160px;
+            background: transparent;
+        }
+
+        &__about {
+            display: block;
+            width: 148px;
+            margin: 12px auto;
+            color: #fff;
+            &:hover {
+                text-shadow: 0 0 2px #ffffff80;   
+            }
+            @include mq() {
+                margin: 12px auto 20px;
+            }
+        }
+
+        &__twitter {
+            display: block;
+            margin: 10px auto;
+            width: 48px;
+            height: 48px;
+            font-size: 28px;
+            background-color: #fff;
+            color: #444;
+            padding: 8px;
+            border-radius: 50%;
+            transition: 0.4s;
+            @include mq() {
+                margin: 16px auto 24px;
+            }
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+    }
+
+    ////////////////////////////////////////////
+    //               動画リスト               //
+    ////////////////////////////////////////////
+    .main-program {
+        display: flex;
+        margin: 12px 0;
+        padding: 6px 4px;
+        border-radius: 8px;
+        box-shadow: 1px 1px 2px #40404040;
+        transition: 0.4s;
+        @include mq() {
+            display: block;
+            width: 198px;
+            height: 202px;
+            margin: 6px 3px;
+            padding: 5px 4px;
+        }
+        &:hover .main-thumbnail {
+            opacity:0.9;
+            transform: scale(1.04) rotate(0.001deg);
+        }
+    
+        &__sizing-thumb {
+            width: 50%;
+            position: relative;
+            height: auto;
+            @include mq() {
+                width: 186px;
+                margin: 1px auto;
+            }
+            &:before {
+                content: "";
+                display: block;
+                padding-top: 56.25%;
+            }
+        }
+    
+        &__sizing-caption {
+            width: 50%;
+            position: relative;
+            height: auto;
+            @include mq() {
+                width: 100%;
+                margin: 0 auto;
+            }
+            &:before {
+                content: "";
+                display: block;
+                padding-top: 56.25%;
+                @include mq() {
+                    padding-top: 0%;
+                }
+            }
+        }
+    
+        &__sizing-inner {
+            position: absolute;
+            top: 0; 
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+    }
+    
+    .main-thumbnail {
+        background-size: auto 134%;
+        background-position: center center;
+        border-radius: 8px;
+        box-shadow: 1px 1px 2px #404040c0;
+        transition-duration: 0.2s;
+        @include mq() {
+            margin-top: 2px;
+            margin-bottom: 8px;
+        }
+
+        &__logo {
+            width: 20%;
+        }
+    
+        &__number {
+            display: block;
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: 28px;
+            height: 28px;
+            background-color: #fbff00;
+            color: #ab29d6;
+            font-size: 24px;
+            text-align: center;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+    
+        & img {
+            position: absolute;
+            display: block;
+            bottom: 2px;
+            right: 4px;
+        }
+    }
+
+    .main-caption {
+        display: table-cell;
+        vertical-align: middle;
+        padding: 0% 4px 0% 6px;
+        position: relative;
+        top: -2px;
+        @include mq() {
+            vertical-align: top;
+            padding: 3% 1px 1% 1px;
+            top: 0;
+        }
+
+        &__title {
+            font-size: 15px;
+            font-weight: bold;
+            position: relative;
+            line-height: 1.25;
+            word-break: break-all;
+            display: -webkit-box;
+            height: 36px;
+            overflow: hidden;
+            text-align: justify;
+            text-justify: inter-ideograph;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            @include mq() {
+                font-size: 14px;
+                height: 32px;
+            }
+        }
+
+        &__creater {
+            display: flex;
+            align-items: center;
+            margin-top: 1%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-text-overflow: ellipsis;
+            @include mq() {
+                margin-top: 0%;
+            }
+
+            &__icon {
+                display: block;
+                width: 48px;
+                height: 48px;
+                min-width: 48px;
+                border-radius: 8px;
+                box-shadow: 1px 1px 2px #404040c0;
+                @include mq() {
+                    width: 18%;
+                }
+            }
+
+            &__name {
+                font-size: 14px;
+                @include mq() {
+                    font-size: 15px;
+                    padding-left: 4px;
+                }
+            }
+        }
+
+        &__date {
+            font-size: 13px;
+            margin-top: 4px;
+            @include mq() {
+                font-size: 14px;
+                margin-top: 0px;
+                padding-left: 4px;
+            }
+        }
+
+        &__view {
+            font-size: 13px;
+            margin-top: 2px;
+            @include mq() {
+                font-size: 13px;
+                padding-left: 4px;
+            }
+        }
+    }
+
+
+//■■■■■■■■■■■■■■■■■■■■■■■■//
+//                  トップページ                  //
+//■■■■■■■■■■■■■■■■■■■■■■■■//
+.top {
+
+    &__announce {
+        width: 90%;
+        margin: 0 auto 16px;
+        border-radius: 12px;
+        background-color: #a8ffad;
+        padding: 8px;
+        box-shadow: 1px 1px 2px #8ad88e;
+        @include mq() {
+            width: 80%;
+            margin-bottom: 24px;
+        }
+
+        & p {
+            text-align: justify;
+            border: dashed 1px #27842c;
+            padding: 8px;
+            border-radius: 9px;
+            font-size: 16px;
+            color: #142301;
+            font-weight: 500;
+            @include mq() {
+                text-align: center;
+                letter-spacing: 1px;
+                line-height: 25px;
+            }
+
+            & span {
+                line-height: 18px;
+                display: inline-block;
+                margin: 4px 0;
+            }
+        }
+    }
+
+    &__margin {
+        margin-bottom: 32px;
+    }
+    
+    &__subtitle {
+        position: relative;
+        color: #130c19;
+        padding: 0 0 2px 8px;
+        border-bottom: 1px dashed #381123;
+        font-size: 14px;
+        & h2 {
+            font-size: 18px;
+            font-weight: bold;
+            display: inline;
+            & a {
+                color: #22a;
+                transition: 0.3s;
+                &:hover {
+                    color: #78f;
+                }
+            }
+            & i {
+                font-size: 24px;
+                @include mq() {
+                    font-size: 28px;
+                }
+            }
+        }
+    }
+
+    &__next-arrow {
+        display: inline-block;
+        margin: 0 0 0 auto;
+        padding-right: 2px;
+        text-align: center;
+        color: #02d;
+        transition: 0.3s;
+        &:hover {
+            color: #78f;
+        }
+    }
+
+    &__next-twitter {
+        width: 480px;
+        max-width: 100%;
+        text-align: right;
+        margin: 0 auto;
+    }
+
+    &__news {
+        
+        @include mq() {
+            background-color: #333;
+            border-radius: 8px;
+            box-shadow: 1px 1px 2px #40404040;
+            margin: 12px 3px 8px;
+            padding: 2px 0;
+        }
+
+        &__wrap {
+            display: block;
+            border-radius: 8px;
+            margin: 4px 0;
+            padding: 6px 8px;
+            width: 100%;
+            background-color: #333;
+            box-shadow: 1px 1px 2px #40404040;
+            transition: 0.3s;
+            @include mq() {
+                display: flex;
+                align-items: flex-end;
+                background-color: unset;
+                box-shadow: none;
+                margin: 0 8px;
+                padding: 6px 12px;
+                width: calc(100% - 16px);
+                border-bottom: dashed 1px #eee;
+                border-radius: 0;
+            }
+            &:hover {
+                background-color: #448;
+            }
+            &:first-child {
+                margin-top: 6px;
+            }
+            &:last-child {
+                margin-bottom: 8px;
+                border-bottom: unset;
+            }
+
+            &:nth-child(2),
+            &:nth-child(4),
+            &:nth-child(6),
+            &:nth-child(8),
+            &:nth-child(10) {
+                background-color: #484848;
+                &:hover {
+                    background-color: #448;
+                }
+            }
+        }
+
+        &__title {
+            display: block;
+            overflow: hidden;
+            max-height: 32px;
+            margin-bottom: 6px;
+            padding-right: 12px;
+            text-align: justify;
+            font-size: 15px;
+            font-weight: 500;
+            color: #fff;
+            @include mq() {
+                width: 65%;
+                margin-bottom: 0;
+                padding-right: 0;
+                font-size: 14px;
+                line-height: 17px;
+            }
+        }
+
+        &__author {
+            text-align: right;
+            font-size: 13px;
+            color: #ccc;
+            @include mq() {
+                width: 35%;
+                text-align: right;
+            }
+        }
+    }
+
+    &__movielist {
+        @include mq() {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+    }
+
+    &__search-caption {
+        margin-top: 6px;
+        font-size: 15px;
+        padding: 0px 4px;
+        text-align: justify;
+        @include mq() {
+            margin-top: 10px;
+            padding: 0px 8px;
+        }
+    }
+    &__search {
+        display: block;
+        width: 60%;
+        min-width: 172px;
+        border-radius: 16px;
+        text-align: center;
+        margin: 8px auto 32px;
+        padding: 12px 0;
+        transition-duration: 0.4s;
+        @include mq() {
+            width: 40%;
+            margin: 16px auto 0;
+        }
+    }
+
+    &__twitter iframe{
+        position: relative!important;
+        bottom: 1px;
+    }
+
+    &__ad {
+        width: 100%;
+        max-width: 320px;
+        height: 100px;
+        margin: 0px auto 24px;
+    }
+    
+}
+#twitter-widget-1 {
+    display: block!important;
+    width: 480px !important;
+    margin: 0 auto 10px!important;
+    border-radius: 6px;
+}
+
+
+//■■■■■■■■■■■■■■■■■■■■■■■■//
+//                  ニュース一覧                  //
+//■■■■■■■■■■■■■■■■■■■■■■■■//
+.news {
+
+    &__bg {
+        @include mq() {
+        }
+    }
+
+    & h1 {
+        margin: 0 auto 20px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    &__wrap {
+        margin: 10px 0;
+        @include mq() {
+            margin: 0 auto;
+            padding: 10px 12px;
+            align-items: flex-start;
+        }
+
+        &:nth-child(2),
+        &:nth-child(4),
+        &:nth-child(6),
+        &:nth-child(8),
+        &:nth-child(10) {
+            &:hover {
+                background-color: #448;
+            }
+        }
+    }
+}
+
+
+//■■■■■■■■■■■■■■■■■■■■■■■■//
+//                    検索結果                    //
+//■■■■■■■■■■■■■■■■■■■■■■■■//
+.result {
+    width: 96%;
+    margin: 0 auto;
+    @include mq() {
+        margin: 0px 0 48px;
+        padding: 20px 0 0 12px;
+        display: flex;
+        justify-content: space-between;
+        width: 852px;
+        flex-wrap: wrap;
+
+        &:before {
+            content:"";
+            display:block;
+            width: 198px;
+            margin: 6px 3px;
+            height:0;
+            order:1;
+        }
+        &:after {
+            content:"";
+            display:block;
+            width: 198px;
+            margin: 6px 3px;
+            height:0;
+        }
+    }
+
+    &__hit {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        @include mq() {
+            justify-content: left;
+            margin-bottom: 12px;
+        }
+
+        &__title {
+            font-weight: bold;
+            color: #224;
+            @include mq() {
+                margin: 2px 8px 0;
+            }
+        }
+
+        &__sort {
+            position: relative;
+            padding: 4px 24px 4px 4px;
+            border-radius: 8px;
+            border: solid 1px #aaa;
+            outline: 0;
+            background-color: #fff;
+            transition: 0.3s;
+            @include mq() {
+                padding: 4px 28px 4px 8px;
+            }
+        }
+    }
+
+    &__word {
+        width: 100%;
+        margin-top: 8px;
+        overflow: scroll;
+        white-space: nowrap;
+        @include mq() {
+            display: flex;
+            overflow: unset;
+            margin: 0 0 10px;
+        }
+
+        &__cell {
+            display: inline-block;
+            padding: 4px 4px 4px 6px;
+            margin: 0 2px;
+            background-color: #5997ff;
+            border-radius: 8px;
+            color: #fff;
+
+            & a {
+                font-size: 10px;
+                padding: 2px;
+                position: relative;
+                bottom: 1px;
+                color: #fff;
+                transition-duration: 0.2s;
+                &:hover {
+                    color: #f00;
+                }
+            }
+        }
+    }
+}
+
+
+//■■■■■■■■■■■■■■■■■■■■■■■■//
+//                  動画レビュー                  //
+//■■■■■■■■■■■■■■■■■■■■■■■■//
+.review {
+
+    &__post {
+        display: block;
+        width: 248px;
+        margin: 0px auto 24px;
+        @include mq() {
+            width: 288px;
+        }
+    }
+
+    &__introduction {
+        margin: 0 0 12px;
+        line-height: 20px;
+        text-align: justify;
+        @include mq() {
+            padding: 0 32px;
+        }
+    }
+
+    &__error {
+        margin: 0 0 12px;
+        padding: 0 2%;
+        font-size: 14px;
+        line-height: 18px;
+        color: #a00;
+        font-weight: bold;
+    }
+
+    &__tab {
+        display: flex;
+        width: 100%;
+        margin: 0 auto;
+        @include mq() {
+            width: 640px;
+        }
+        &__left, &__right {
+            display: block;
+            padding: 10px 0;
+            width: 50%;
+            border: solid 1px #668;
+            text-align: center;
+        }
+        &__left {
+            border-top-left-radius:    12px;
+            border-bottom-left-radius: 12px;
+        }
+        &__right {
+            border-top-right-radius:    12px;
+            border-bottom-right-radius: 12px;
+        }
+        &__selected {
+            background-color: #668;
+            color: #fff;
+        }
+        &__selectable {
+            &:hover {
+                background-color: #fff;
+            }
+        }
+    }
+
+    &__wrap {
+        display: block;
+        margin: 12px 0;
+        padding: 14px 6px 4px;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 1px 1px 2px #40404040;
+        @include mq() {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            height: 230px;
+            margin: 18px 3px 10px;
+            padding: 12px 4px 0;
+        }
+
+        & h2 {
+            width: calc(100% - 12px);
+            max-height: 38px;
+            padding-bottom: 2px;
+            margin: 0 6px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+            text-align: justify;
+            font-size: 16px;
+            font-weight: bold;
+            border-bottom: dashed 1px #c3c3c3;
+            @include mq() {
+                max-height: unset;
+                font-size: 18px;
+                white-space: nowrap;
+                text-align: center;
+            }
+            & a {
+                color: #22b;
+                transition: 0.3s;
+                &:hover {
+                    color: #66f;
+                    text-shadow: 0 0 2px #aaf;
+                }
+            }
+        }
+
+        &__2 {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 4px 0;
+            border-bottom: dashed 1px #c3c3c3;
+            @include mq() {
+                display: block;
+                padding: 0;
+                border-bottom: none;
+            }
+        }
+
+        &__sizing-thumb {
+            display: inherit;
+            width: 50%;
+            position: relative;
+            height: auto;
+            transition: 0.3s;
+            @include mq() {
+                width: 256px;
+            }
+            & img {
+                position: absolute;
+                bottom: 0px;
+                right: 6px;
+            }
+            &:before {
+                content: "";
+                display: block;
+                padding-top: 56.25%;
+            }
+            &:hover {
+                opacity: 0.8;
+                transform: scale(1.03);
+            }
+        }
+
+        &__thumbnail {
+            border-radius: 8px;
+            box-shadow: 1px 1px 2px #404040c0;
+            transition-duration: 0.2s;
+        }
+
+        &__caption {
+            display: table;
+            table-layout: fixed;
+            width: 50%;
+            @include mq() {
+                width: 256px;
+                margin-top: 2px;
+            }
+
+            & div:first-child {
+                display: table-cell;
+                vertical-align: middle;
+                width: 30%;
+                padding: 4px 0 4px 4px;
+                @include mq() {
+                    width: 64px;
+                }
+            }
+            & div:nth-child(2) {
+                display: table-cell;
+                vertical-align: middle;
+                width: 70%;
+                padding: 4px 0 0 4px;
+                @include mq() {
+                    width: 100%;
+                }
+            }
+            & div:nth-child(3),
+            & div:nth-child(4) {
+                width: 100%;
+                & p {
+                    white-space: nowrap;
+                    padding-left: 4px;
+                }
+            }
+
+            & img {
+                border-radius: 4px;
+                box-shadow: 1px 1px 2px #404040c0;
+            }
+        }
+
+        &__creater {
+            display: inline-block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100%;
+        }
+
+        &__review {
+            width: 100%;
+            @include mq() {
+                width: calc(100% - 256px);
+            }
+
+            &__detail {
+                position: relative;
+                max-height: 264px;
+                margin-bottom: 10px;
+                padding: 8px 8px 0;
+                font-size: 15px;
+                word-break: break-all;
+                text-align: justify;
+                overflow: hidden;
+                @include mq() {
+                    height: 176px;
+                    margin-bottom: 0;
+                    padding: 4px 8px 0;
+                }
+
+                & a {
+                    text-decoration: underline;
+                }
+
+                &__displayed-at {
+                    display: inline-block;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translateY(-50%) translateX(-50%);
+                    padding: 8px 16px;
+                    color: #050708;
+                    background-color: #cafff9;
+                    border: solid 1px #39775c;
+                    border-radius: 12px;
+                    text-shadow: 0 0 1px #fff;
+                    box-shadow: 1px 1px 2px #316f5d;
+                    white-space: nowrap;
+                }
+            }
+        }
+
+        &__edit {
+            padding: 6px 18px;
+            margin: 0 3px;
+            border-radius: 6px;
+            position: relative;
+            bottom: 0px;
+            right: -4px;
+            transition: 0.3s;
+            @include mq() {
+                padding: 6px 32px;
+                bottom: 18px;
+                left: 4px;
+            }
+            &:hover {
+                background-color: #fff!important;
+            }
+        }
+
+        &__reviewer {
+            text-align: right;
+            padding-right: 4px;
+            font-size: 14px;
+            color: #666;
+        }
+    }
+
+    & label {
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    & .note-editor {
+        width: 100%;
+        margin: 0;
+        @include mq() {
+            width: 96%;
+            margin: 0 2%;
+        }
+    }
+    
+    & .note-editable {
+        background-color: #fff;
+        line-height: 24px;
+    }
+
+    &__formwrap {
+        margin-bottom: 12px;
+
+        &__movie-announce {
+            margin: 0 3% 2px;
+            font-size: 14px;
+            text-align: justify;
+            color: #622;
+        }
+
+        &__length {
+            margin-top: 8px;
+            padding-right: 4px;
+            font-size: 14px;
+            text-align: right;
+            @include mq() {
+                padding-right: 16px;
+            }
+        }
+
+        & input {
+            background-color: #fff;
+            width: 96%;
+            margin: 0 2%;
+            padding: 4px 8px;
+            border: solid 1px #aaa;
+            border-radius: 4px;
+            &[readonly="readonly"] {
+                background-color: unset;
+            }
+        }
+    }
+    
+    &__submit-button {
+        display: block;
+        margin: 30px auto 0;
+        width: 120px;
+        font-weight: bold;
+    }
+
+    &__movieid-info {
+        height: 64px;
+    }
+}
+
+
+//■■■■■■■■■■■■■■■■■■■■■■■■//
+//                 動画再生ページ                 //
+//■■■■■■■■■■■■■■■■■■■■■■■■//
+.program {
+    margin-top: -20px;
+    @include mq() {
+        margin-top: -8px;
+    }
+
+    &__announce {
+        width: 100%;
+        margin: -36px auto 12px;
+        padding: 12px 8px;
+        background-size: 20px 20px;
+        border-radius: 5px;
+        background-color: #f9ffff;
+        background-image: linear-gradient(45deg,rgba(255,186,238,.1) 25%,transparent 25%,transparent 50%,rgba(255,186,238,.1) 50%,rgba(255,186,238,.1) 75%,transparent 75%,transparent),linear-gradient(-45deg,rgba(255,186,238,.1) 25%,transparent 25%,transparent 50%,rgba(255,186,238,.1) 50%,rgba(255,186,238,.1) 75%,transparent 75%,transparent);
+        border: solid 2px #f48fb1;
+
+        @include mq() {
+            margin: 24px auto 16px;
+        }
+
+        & p {
+            font-size: 15px;
+            margin-bottom: 8px;
+            text-align: justify;
+            @include mq() {
+                font-size: 16px;
+            }
+            & span {
+                font-weight: bold;
+                color: #d00;
+                font-size: 16px;
+            }
+        }
+
+        & a {
+            display: block;
+            background-image: url(/image/to_top_banner.jpg);
+            width: 210px;
+            height: 52px;
+            background-size: contain;
+            margin: 0 auto;
+            box-shadow: 1px 1px 3px #422;
+            outline: solid 1px #70529c;
+            transition: 0.3s;
+            @include mq() {
+                width: 420px;
+                height: 104px;
+                margin: 24px auto 8px;
+            }
+            &:hover {
+                background-image: url(/image/to_top_banner2.jpg);
+            }
+        }
+    }
+
+    &__flash {
+        width: 96%;
+        padding: 8px 0;
+        text-align: center;
+        background: -moz-linear-gradient(#ffb03c, #ff708d);
+        background: -webkit-linear-gradient(#ffb03c, #ff708d);
+        background: linear-gradient(to right, #ffb03c, #ff708d);
+        color: #FFF;
+        margin: 0 auto 8px;
+        animation: flash 0.25s linear 0.5s 6 alternate none running;
+        @include mq() {
+            margin: 16px auto 4px;
+        }
+    }
+
+    &__embed {
+        position: relative;
+        left: -4%;
+        width: 108%;
+        padding-top: 75%;
+
+        @include mq() {
+            left: 0;
+            width: 100%;
+        }
+
+        & iframe {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100% !important;
+            height: 100% !important;
+        }
+    }
+
+    &__container {
+        padding: 0 8px;
+        @include mq() {
+            width: 100%;
+        }
+        
+        &__date {
+            text-align: right;
+            margin: 2px 0;
+            color: #444;
+            font-size: 14px;
+            @include mq() {
+                font-size: 16px;
+                text-align: left;
+                margin-top: 12px;
+            }
+        }
+
+        &__title {
+            margin-top: 4px;
+            text-justify: inter-ideograph;
+            word-break: break-all;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 22px;
+            color: #222;
+            display: -webkit-box;
+            height: 40px;
+            overflow: hidden;
+            text-align: justify;
+            text-justify: inter-ideograph;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            @include mq() {
+                font-size: 18px;
+                height: 20px;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+            }
+        }
+
+        &__site {
+            display: block;
+            margin: 20px auto;
+            width: 192px;
+        }
+    }
+
+    &__info {
+        @include mq() {
+            display: flex;
+        }
+
+        & table:first-child {
+            @include mq() {
+                width: 50%;
+                margin: 10px 2%;
+            }
+        }
+        & table:nth-child(2) {
+            table-layout: fixed;
+            @include mq() {
+                width: 42%;
+                margin: 10px 2%;
+            }
+        }
+
+        & table {
+            width: 95%;
+            margin: 10px auto;
+            padding: 4px 8px;
+            border-collapse: separate;
+            border-radius: 7px;
+            border: solid 1px #777777;
+            box-shadow: 1px 1px 4px #80808040;
+
+            & a {
+                text-decoration: underline;
+                text-underline-position: under;
+                transition: 0.2s;
+                &:hover {
+                    text-shadow: 1px 1px 2px #00004080;
+                    color: #00f;
+                }
+            }
+
+            & th {
+                text-align: center;
+                padding: 6px 0 4px;
+                font-size: 14px;
+            }
+
+            & td {
+                border-collapse: collapse;
+                border-top: solid 1px #aaa;
+            }
+        }
+
+        &__channel-icon {
+            width: 80px;
+            height: 80px;
+            background-size: 80px 80px;
+            background-repeat: no-repeat;
+            background-position-y: center;
+            background-position-x: left;
+            padding-right: 10px;
+            @include mq() {
+                width: 88px;
+            }
+        }
+
+        &__tdleft {
+            width: 35%;
+            text-align: right;
+            font-size: 15px;
+            vertical-align: middle;
+            padding: 6px 0px;
+        }
+        &__tdright {
+            width: 65%;
+            text-align: left;
+            vertical-align: middle;
+            padding: 6px 0 6px 4px;
+            line-height: 22px;
+        }
+
+        &__edit {
+            text-align-last: right;
+            & span{
+                text-decoration: underline;
+                text-underline-position: under;
+                cursor: pointer;
+                transition: 0.2s;
+                &:hover {
+                    text-shadow: 1px 1px 2px #00004080;
+                    color: #00f;
+                }
+            }
+        }
+    }
+
+    & h2 {
+        width: 100%;
+        text-align: center;
+        margin: 32px auto 16px;
+        padding: 14px 0;
+        background-color: #ccc;
+        font-weight: bold;
+    }
+
+    &__more-button {
+        display: block;
+        width: 96%;
+        margin: 0 auto 40px;
+        padding: 8px 0;
+        font-weight: bold;
+        @include mq() {
+            width: 240px;
+            margin: 10px 20px 0 auto;
+            padding: 12px 12px;
+            font-size: 16px;
+        }
+    }
+
+    &__review {
+        &__wrapper {
+            width: 96%;
+            margin: 0 auto 20px;
+            padding: 8px;
+            border-radius: 7px;
+            border: solid 1px #777777;
+            box-shadow: 1px 1px 4px #80808040;
+            word-break: break-all;
+            @include mq() {
+                width: 94%;
+            }
+        }
+
+        &__detail {
+            font-size: 15px;
+            line-height: 18px;
+        }
+        &__reviewer {
+            margin-top: 4px;
+            font-size: 14px;
+            color: #666;
+            text-align: right;
+        }
+
+        &__noreview {
+            width: 96%;
+            margin: 0 auto 12px;
+            font-size: 15px;
+        }
+    }
+
+    &__relation {
+        width: 96%;
+        margin: 0 auto;
+        @include mq() {
+            display: flex;
+        }
+    }
+
+    &__return {
+        display: block;
+        width: 96px;
+        margin: 24px auto 0 auto;
+        @include mq() {
+            font-size: 16px;
+            padding: 12px 16px;
+        }
+    }
+
+    &__footer {
+        width: 96%;
+        margin: 0 2%;
+        @include mq() {
+            width: 100%;
+        }
+    }
+}
+@keyframes flash {
+    0%    {opacity: 1.0;}
+    100%  {opacity: 0.1;}
+}
+
+////////////////////////////////////////////
+//           情報編集ダイアログ           //
+////////////////////////////////////////////
+.edit-modal {
+    position: fixed;
+    left: 3%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 94%;
+    border-radius: 8px;
+    background-color: #fff;
+    z-index: 50;
+    box-shadow: 2px 4px 4px #00000080;
+    @include mq() {
+        max-width: 480px;
+        left: calc(50% - 240px);
+    }
+
+    & input[type="submit"] {
+        width: 196px;
+        margin: 16px auto 32px;
+        display: block;
+    }
+
+    &__caution {
+        margin: 32px auto 0;
+        text-align: center;
+        line-height: 20px;
+        font-size: 15px;
+        color: #a00;
+    }
+
+    &__close {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 10px;
+        width: 32px;
+        height: 32px;
+        font-size: 20px;
+        margin: 8px 0px 0 auto;
+        padding: 4px 8px;
+        color: #222;
+        cursor: pointer;
+        transition-duration: 0.2s;
+        &:hover {
+            transform: scale(1.4);
+        }
+    }
+
+    &__table {
+        table-layout: fixed;
+        width: 94%;
+        margin: 8px auto 0;
+
+        & td {
+            position: relative;
+        }
+
+        & input, & select {
+            width: 98%;
+            box-sizing:border-box;
+            padding: 4px 24px 4px 8px;
+            border-radius: 8px;
+            border: solid 1px #aaa;
+            outline: 0;
+            background-color: #fff;
+            transition: 0.3s;
+            &:focus {
+                border: solid 1px #c86af3;
+                box-shadow: 0px 0px 4px #e5b0fd;
+            }
+        }
+
+        & th {
+            border-bottom: solid 1px #888;
+            padding: 7px;
+        }
+    }
+
+    &__tdleft {
+        position: relative;
+        top: 4px;
+        width: 32%;
+        padding: 6px 10px 0 0;
+        font-size: 15px;
+        font-weight: bold;
+        text-align: right;
+        vertical-align: middle;
+        @include mq() {
+            width: 28%;
+        }
+    }
+    &__tdright {
+        padding: 12px 12px 0 0;
+        @include mq() {
+            padding: 12px 28px 0 0;
+        }
+
+        & input[readonly="readonly"] {
+            background-color: #eee;
+        }
+    }
+}
+
+
+//■■■■■■■■■■■■■■■■■■■■■■■■//
+//                    詳細検索                    //
+//■■■■■■■■■■■■■■■■■■■■■■■■//
+.adsearch {
+    margin-top: 78px;
+    padding-top: 32px;
+    
+    & h1 {
+        margin: -10px auto 20px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    &__game,
+    &__movie {
+        width: 100%;
+        @include mq() {
+            width: 45%;
+            margin: 0 2%;
+        }
+    }
+    &__game {
+        margin-bottom: 24px;
+    }
+    
+    &__wrap {
+        position: relative;
+        margin-bottom: 24px;
+    }
+
+    &__select {
+        // &:after {
+        //     font-family: "Font Awesome 5 Free";
+        //     font-weight: 900;
+        //     content: '\f0d7';
+        //     position: absolute;
+        //     right: 12px;
+        //     top: 9px;
+        //     color: #636;
+        //     pointer-events: none;
+        // }
+    }
+
+    & select,
+    & input[type="text"] {
+        padding: 10px 0px 4px 20px;
+        border: 1px solid #868;
+        width: 100%;
+        background-color: #ffffff80;
+        color: #636;
+        font-family: 'Lato', 'sans-serif';
+        font-size: 16px;
+        border-radius: 6px;
+        transition: all 0.3s;
+        //appearance: none;
+        //-webkit-appearance: none;
+        //-moz-appearance: none;
+    }
+
+    & label {
+        position: absolute;
+        top: -8px;
+        font-size: 15px;
+        left: 10px;
+        background-color: #f7f7f7;
+        color: #535;
+        padding: 0 6px;
+    }
+
+    &__button {
+        width: 128px;
+        margin: 4px auto 16px;
+        display: block;
+    }
+}
+
+//■■■■■■■■■■■■■■■■■■■■■■■■//
+//                   ランキング                   //
+//■■■■■■■■■■■■■■■■■■■■■■■■//
+.ranking {
+    & h1 {
+        text-align: center;
+        background-color: #f44;
+        padding: 4px 0;
+        margin-bottom: 8px;
+        color: $color-white;
+        transform: skew(-10deg);
+        background-image: -webkit-gradient(linear, left top, right top, from(#f83600), to(#b339ff));
+        background-image: -webkit-linear-gradient(left, #f83600 0%, #b339ff 100%);
+        background-image: linear-gradient(to right, #f83600 0%, #b339ff 100%);
+    }
+
+    &__title-eng {
+        margin-bottom: 4px;
+        font-style: italic;
+        font-size: 22px;
+        font-weight: bold;
+        text-shadow: -1px 1px 0 #f44, -4px 4px 0 #300;
+    }
+    &__title-jpn {
+        text-shadow: -2px 2px 1px #300;
+    }
+
+    &__explain {
+        margin-bottom: 20px;
+    }
+
+    &__list {
+        &__rank {
+            width: 64px;
+            height: 64px;
+            background-image: url(/image/ranking.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: absolute;
+            bottom: -36px;
+            z-index: 1;
+            text-align: center;
+            padding: 12px 0 0 3px;
+            font-weight: bold;
+            font-size: 20px;
+            color: #400;
+        }
+
+        &__number {
+            font-size: 14px;
+            text-align: left;
+            margin-bottom: 2px;
+            padding-left: 70px;
+            width: 98%;
+            line-height: 14px;
+            color: #424;
+            border-bottom: solid 1px #646;
+        }
+    }
+
+    &__program {
+        display: flex;
+        margin: 12px 0;
+        padding: 6px 4px;
+        border-radius: 8px;
+        box-shadow: 1px 1px 2px #40404040;
+        transition-duration: 0.4s;
+        @include mq() {
+            margin: 12px 6px 4px;
+        }
+        &:hover {
+            box-sizing: border-box;
+
+            & .ranking__thumbnail {
+                transform: scale(1.05) rotate(0.001deg);
+            }
+        }
+    }
+
+    &__thumbnail {
+        border-radius: 8px;
+        box-shadow: 1px 1px 2px #404040c0;
+        backface-visibility: hidden;
+        transition-duration: 0.2s;
+
+        & img {
+            position: absolute;
+            bottom: 2px;
+            right: 4px;
+            width: 20%;
+            @include mq() {
+                width: 24%;
+            }
+        }
+    }
+
+    &__caption {
+        display: table-cell;
+        vertical-align: middle;
+        padding: 0% 4px 0 6px;
+        position: relative;
+        top: -2px;
+        @include mq() {
+            padding: 1% 4px 0 6px;
+        }
+
+        &__title {
+            font-size: 15px;
+            font-weight: bold;
+            position: relative;
+            line-height: 1.25;
+            word-break: break-all;
+            height: 36px;
+            overflow: hidden;
+            text-align: justify;
+            text-justify: inter-ideograph;
+            @include mq() {
+                display: block;
+                height: 24px;
+                font-size: 16px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+        }
+
+        &__creater-icon {
+            display: block;
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            border-radius: 8px;
+            box-shadow: 1px 1px 2px #404040c0;
+            @include mq() {
+                width: 58px;
+                height: 58px;
+                min-width: 58px;
+            }
+        }
+    }
+}
+
+
+//■■■■■■■■■■■■■■■■■■■■■■■■//
+//                    視聴履歴                    //
+//■■■■■■■■■■■■■■■■■■■■■■■■//
+.history {
+    
+    & h1 {
+        margin: 0 auto 20px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    &__content {
+        display: flex;
+        width: 100%;
+        padding: 10px 0;
+        border-bottom: dashed 1px #888;
+        transition: 0.3s;
+        &:hover {
+            background-color: #bfd;
+        }
+    }
+
+    &__sizing {
+        &__thumbnail {
+            width: 32%;
+            min-width: 112px;
+            max-width: 160px;
+            position: relative;
+            height: auto;
+            @include mq() {
+                width: 160px;
+            }
+            &:before {
+                content: "";
+                display: block;
+                padding-top: 56.25%;
+            }
+        }
+        &__caption {
+            width: 68%;
+            position: relative;
+            height: auto;
+            @include mq() {
+                width: calc(100% - 168px);
+            }
+            &:before {
+                content: "";
+                display: block;
+            }
+        }
+    }
+
+    &__thumbnail img {
+        position: relative;
+        top: 51%;
+        left: 70%;
+        width: 30%;
+    }
+
+    &__caption {
+        display: table-cell;
+        vertical-align: middle;
+        padding: 0 8px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &__date {
+            font-size: 14px;
+            color: #444;
+            @include mq() {
+                margin-bottom: 2px;
+            }
+        }
+
+        & img {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            min-width: 30px;
+            border-radius: 4px;
+            box-shadow: 1px 1px 2px #404040c0;
+            @include mq() {
+                margin-top: 4px;
+                width: 40px;
+                height: 40px;
+                min-width: 40px;
+            }
+        }
+
+        & span {
+            font-size: 15px;
+            line-height: 32px;
+            color: $color-black;
+            @include mq() {
+                line-height: 48px;
+            }
+        }
+    }
+}
+
+
+//■■■■■■■■■■■■■■■■■■■■■■■■//
+//               このサイトについて               //
+//■■■■■■■■■■■■■■■■■■■■■■■■//
+.about {
+
+    & h1 {
+        display: block;
+        margin: 8px 0px;
+        text-align: center;
+        font-weight: bold;
+        border-bottom: solid 3px #c9f;
+        @include mq() {
+            margin: 8px 48px;
+        }
+    }
+
+    & p, ul {
+        margin-bottom: 28px;
+        @include mq() {
+            margin: 0 52px 32px;
+        }
+    }
+
+    & ul {
+        margin-left: 20px;
+        list-style: disc;
+        @include mq() {
+            margin-left: 72px;
+        }
+
+        &li {
+            margin-bottom: 8px;
+            list-style: disc;
+            @include mq() {
+                margin-bottom: 8px;
+            }
+        }
+    }
+
+    &__contact {
+        margin: 10px 0px;
+        @include mq() {
+            margin-left: 52px;
+        }
+    }
+}
+
+
+// //■■■■■■■■■■■■■■■■■■■■■■■■//
+// //                  追加フォント                  //
+// //■■■■■■■■■■■■■■■■■■■■■■■■//
+// //フォント作成
+// //https://icomoon.io/
+// @font-face {
+//     font-family: 'icomoon';
+//     src:  url('../fonts/icomoon.eot?ver=20210102');
+//     src:  url('../fonts/icomoon.eot?ver=20210102') format('embedded-opentype'),
+//       url('../fonts/icomoon.woff?ver=20210102') format('woff'),
+//       url('../fonts/icomoon.ttf?ver=20210102') format('truetype'),
+//       url('../fonts/icomoon.svg?ver=20210102') format('svg');
+//     font-weight: normal;
+//     font-style: normal;
+//     font-display: block;
+//   }
+  
+//   [class^="icon-"], [class*=" icon-"] {
+//     /* use !important to prevent issues with browser extensions that change fonts */
+//     font-family: 'icomoon' !important;
+//     speak: never;
+//     font-style: normal;
+//     font-weight: normal;
+//     font-variant: normal;
+//     text-transform: none;
+//     line-height: 1;
+  
+//     /* Better Font Rendering =========== */
+//     -webkit-font-smoothing: antialiased;
+//     -moz-osx-font-smoothing: grayscale;
+//   }
+
+//   .icon-angle-double-left:before {
+//     content: "\e900";
+//   }
+//   .icon-angle-double-right:before {
+//     content: "\e901";
+//   }
+//   .icon-angle-left:before {
+//     content: "\e902";
+//   }
+//   .icon-angle-right:before {
+//     content: "\e903";
+//   }
+//   .icon-bars:before {
+//     content: "\e904";
+//   }
+//   .icon-chevron-circle-right:before {
+//     content: "\e905";
+//   }
+//   .icon-copyright:before {
+//     content: "\e906";
+//   }
+//   .icon-edit:before {
+//     content: "\e907";
+//   }
+//   .icon-external-link-alt:before {
+//     content: "\e908";
+//   }
+//   .icon-history:before {
+//     content: "\e909";
+//   }
+//   .icon-home:before {
+//     content: "\e90a";
+//   }
+//   .icon-photo-video:before {
+//     content: "\e90b";
+//   }
+//   .icon-rss:before {
+//     content: "\e90c";
+//   }
+//   .icon-search:before {
+//     content: "\e90d";
+//   }
+//   .icon-times:before {
+//     content: "\e90e";
+//   }
+//   .icon-trophy:before {
+//     content: "\e90f";
+//   }
+//   .icon-tv:before {
+//     content: "\e910";
+//   }
+//   .icon-twitter:before {
+//     content: "\e911";
+//   }
+  
