@@ -19,7 +19,7 @@ class ApiMainController extends Controller
 
     public function index()
     {
-        $newses = $this->newsService->getNewsesTop(limit: 4);
+        $newses = $this->newsService->getNewsesTop();
         return response()->json($newses, 200);
     }
 }

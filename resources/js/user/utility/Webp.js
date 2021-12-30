@@ -12,7 +12,7 @@ import React from 'react';
 const Webp = (props) => {
   return (
     <picture>
-      <source type="image/webp" className={ props.className } src={ "/image/" + (props.src) + ".webp" } alt={ props.alt} />
+      <source type="image/webp" className={ props.className } srcSet={ "/image/" + (props.src) + ".webp" } alt={ props.alt} />
       <img className={ props.className } src={ "/image/" + (props.src) + ".png" } alt={ props.alt} />
     </picture>
   );

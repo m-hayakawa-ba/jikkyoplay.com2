@@ -6,7 +6,7 @@ import axios from 'axios';
 function NewsIndex() {
 
   //valuesの状態を管理する
-  const [newses, setNewses] = useState([]);
+  const [newses, setNewses] = useState([{data: {}}]);
 
   //画面に到着したらnewsデータを読み込む
   useEffect(() => {
@@ -30,7 +30,8 @@ function NewsIndex() {
       　　　　　　　　　　　　　　　　　　　　　　　　　　newsです<br />
       　　　　　　　　　　　　　　　　　　　　　　　　　　<Link to="/">トップページへ戻る</Link><br /><br />
 
-      {newses.map((news) => (
+      
+      {newses.data && newses.data.map((news) => (
         <div key={news.id}>
           　　　　　　　　　　　　　　　　　　　　　　　　　　{news.title}
         </div>
