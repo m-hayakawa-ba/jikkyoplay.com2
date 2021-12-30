@@ -5,7 +5,8 @@ import {Helmet} from 'react-helmet';
 function HomeIndex() {
   return (
     <>
-      homeです
+      　　　　　　　　　　　　　　　　　　　　　　　　　　home<br />
+      　　　　　　　　　　　　　　　　　　　　　　　　　　<Link to="/news">news一覧へ</Link>
     </>
   );
 }
