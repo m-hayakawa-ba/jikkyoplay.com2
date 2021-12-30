@@ -2,12 +2,12 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {Helmet} from 'react-helmet';
 
-function HomeIndex() {
+function NewsIndex() {
   return (
     <>
-      test
+      newsです
     </>
   );
 }
 
-export default HomeIndex;
+export default NewsIndex;

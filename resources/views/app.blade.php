@@ -8,8 +8,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="keywords" content="ゲーム,ゲーム実況,実況プレイ,part1,まとめ,実況プレイ動画,You Tube,ニコニコ動画">
-    <script src="/js/user.js" defer></script> {{-- js --}}
-    <script src="/css/user.css" defer></script> {{-- css --}}
+
+    {{-- jsの読み込み --}}
+    <script src="/js/user.js" defer></script>
+    <script src="https://kit.fontawesome.com/bd92f5a39e.js" crossorigin="anonymous" defer></script>
+
+    {{-- cssの読み込み --}}
+    <link rel="stylesheet" href="/css/user.css"> 
 
   </head>
 

@@ -1,6 +1,18 @@
 const mix = require('laravel-mix');
 
 /*
+ | js を import するときに、/resources/js 起点の絶対パスで表記できるようにする
+ */
+mix.webpackConfig({
+  resolve: {
+    extensions: ['.js'],
+    alias: {
+      '@': __dirname + '/resources/js'
+    }
+  },
+})
+
+/*
  |--------------------------------------------------------------------------
  | Mix Asset Management
  |--------------------------------------------------------------------------
