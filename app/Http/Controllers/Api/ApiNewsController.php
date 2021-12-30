@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Services\NewsService;
 
-class UserNewsController extends Controller
+class ApiNewsController extends Controller
 {
     /**
      * コンストラクタ
@@ -23,6 +23,6 @@ class UserNewsController extends Controller
     public function index()
     {
         $newss = $this->newsService->getNewss();
-        return response()->json($newss, 20);
+        return response()->json($newss, 200);
     }
 }

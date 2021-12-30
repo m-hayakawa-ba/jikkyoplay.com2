@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Services\NewsService;
 
-class UserMainController extends Controller
+class ApiMainController extends Controller
 {
     /**
      * コンストラクタ
