@@ -21,10 +21,28 @@ final class NewsService
     }
 
     /**
+     * トップページに表示するニュースを取得する
+     * @param intger $limit 取得するニュースの最大件数
+     */
+    public function getNewsesTop(int $limit)
+    {
+        return $this->newsModel
+            ->select(['id', 'title', 'author', 'url', 'published_at'])
+            ->orderBy('published_at', 'desc')
+            ->orderBy('id', 'desc')
+            ->limit($limit)
+            ->get();
+    }
+
+    /**
      * すべてのニュース一覧を取得する
      */
-    public function getNewss()
+    public function getNewses()
     {
-        return $this->newsModel->all();
+        return $this->newsModel
+            ->select(['id', 'title', 'author', 'url', 'published_at'])
+            ->orderBy('published_at', 'desc')
+            ->orderBy('id', 'desc')
+            ->get();
     }
 }
