@@ -2378,7 +2378,7 @@ function NewsIndex() {
               className: "top__news__author",
               children: [news.author, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {
                 className: "pc-br"
-              }), news.published_at]
+              }), news.published_date]
             })]
           }, news.id);
         })

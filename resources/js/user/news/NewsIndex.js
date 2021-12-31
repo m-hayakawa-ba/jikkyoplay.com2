@@ -58,7 +58,7 @@ function NewsIndex() {
           {newses.data && newses.data.map((news) => (
             <a href={news.url} target="blank" className='top__news__wrap news__wrap' key={news.id}>
               <div className="top__news__title">{news.title}</div>
-              <div className="top__news__author">{news.author}<br className="pc-br" />{news.published_at}</div>
+              <div className="top__news__author">{news.author}<br className="pc-br" />{news.published_date}</div>
             </a>
           ))}
         </div>
