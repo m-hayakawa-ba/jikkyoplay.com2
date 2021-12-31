@@ -11,18 +11,33 @@ function NewsIndex() {
 
   //現在見ているページ
   const location = useLocation().search;
-  const query2 = new URLSearchParams(location);
-  let page = query2.get('page') ?? 1;
 
-  //画面に到着したらnewsデータを読み込む
+  
+  //初回読み込み持
   useEffect(() => {
-    getNewses(page);
-  }, [page])
+    let pageQuery =  new URLSearchParams(location);
+    let pageNumber = pageQuery.get('page') ?? 1;
+    getNewses(pageNumber);
+    console.log('初回書き込みです');
+  }, [])
 
-  //一覧情報を取得しvaluesにセットする
+  //ページネーションクリック持
+  const runClickPagination = (pageNumber) => {
+    getNewses(pageNumber);
+    history.pushState({}, '', '?page=' + pageNumber);
+    console.log('ページネーションクリックです');
+  };
+
+  //進む・戻る実行時
+  window.onpopstate = function() {
+    let pageQuery =  new URLSearchParams(location);
+    let pageNumber = pageQuery.get('page') ?? 1;
+    getNewses(pageNumber);
+    console.log('戻る・進む実行時です');
+  }
+
+  //DBからニュースの一覧情報を取得する
   const getNewses = (pageNumber) => {
-
-    //apiからニュースデータを取得
     axios
       .get('/api/news?page=' + pageNumber)
       .then(response => {
@@ -31,15 +46,8 @@ function NewsIndex() {
       .catch(() => {
         console.log('通信に失敗しました');
       });
-
-    //現在のページとリクエストしたページが違うときだけURLを書き換え
-    //この処理を書かないとブラウザバックがうまくいかない
-    if (page != pageNumber) {
-      page = pageNumber;
-      history.pushState({}, '', '?page=' + page);
-      console.log('URL書き換えました');
-    }
   }
+
 
   return (
       
@@ -58,7 +66,7 @@ function NewsIndex() {
         itemsCountPerPage={newses.per_page}
         totalItemsCount={newses.total}
         pageRangeDisplayed='5'
-        onChange={getNewses}
+        onChange={runClickPagination}
         itemClass='page-item'
         linkClass='page-link'
       />

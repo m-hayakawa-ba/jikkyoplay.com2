@@ -2317,8 +2317,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function NewsIndex() {
-  var _query2$get;
-
   //valuesの状態を管理する
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
     data: {}
@@ -2328,28 +2326,40 @@ function NewsIndex() {
       setNewses = _useState2[1]; //現在見ているページ
 
 
-  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useLocation)().search;
-  var query2 = new URLSearchParams(location);
-  var page = (_query2$get = query2.get('page')) !== null && _query2$get !== void 0 ? _query2$get : 1; //画面に到着したらnewsデータを読み込む
+  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useLocation)().search; //初回読み込み持
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    getNewses(page);
-  }, [page]); //一覧情報を取得しvaluesにセットする
+    var _pageQuery$get;
+
+    var pageQuery = new URLSearchParams(location);
+    var pageNumber = (_pageQuery$get = pageQuery.get('page')) !== null && _pageQuery$get !== void 0 ? _pageQuery$get : 1;
+    getNewses(pageNumber);
+    console.log('初回書き込みです');
+  }, []); //ページネーションクリック持
+
+  var runClickPagination = function runClickPagination(pageNumber) {
+    getNewses(pageNumber);
+    history.pushState({}, '', '?page=' + pageNumber);
+    console.log('ページネーションクリックです');
+  }; //進む・戻る実行時
+
+
+  window.onpopstate = function () {
+    var _pageQuery$get2;
+
+    var pageQuery = new URLSearchParams(location);
+    var pageNumber = (_pageQuery$get2 = pageQuery.get('page')) !== null && _pageQuery$get2 !== void 0 ? _pageQuery$get2 : 1;
+    getNewses(pageNumber);
+    console.log('戻る・進む実行時です');
+  }; //DBからニュースの一覧情報を取得する
+
 
   var getNewses = function getNewses(pageNumber) {
-    //apiからニュースデータを取得
     axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/news?page=' + pageNumber).then(function (response) {
       setNewses(response.data);
     })["catch"](function () {
       console.log('通信に失敗しました');
-    }); //現在のページとリクエストしたページが違うときだけURLを書き換え
-    //この処理を書かないとブラウザバックがうまくいかない
-
-    if (page != pageNumber) {
-      page = pageNumber;
-      history.pushState({}, '', '?page=' + page);
-      console.log('URL書き換えました');
-    }
+    });
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
@@ -2365,7 +2375,7 @@ function NewsIndex() {
       itemsCountPerPage: newses.per_page,
       totalItemsCount: newses.total,
       pageRangeDisplayed: "5",
-      onChange: getNewses,
+      onChange: runClickPagination,
       itemClass: "page-item",
       linkClass: "page-link"
     })]
