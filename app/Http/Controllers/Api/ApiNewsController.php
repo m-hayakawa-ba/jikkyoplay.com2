@@ -20,7 +20,7 @@ class ApiNewsController extends Controller
     /**
      * 一覧表示
      */
-    public function index()
+    public function index(Request $request)
     {
         $newses = $this->newsService->getNewsesIndex();
         return response()->json($newses, 200);

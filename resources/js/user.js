@@ -19,11 +19,18 @@ import NewsIndex from '@/user/news/NewsIndex';
 function App() {
   return (
     <>
+
+      {/* 左カラム */}
       <LeftNavi />
-      <Switch>
-        <Route path="/" exact component={HomeIndex} />
-        <Route path="/news" exact component={NewsIndex} />
-      </Switch>
+
+      {/* メインコンテンツ部分 */}
+      <div id="main" className="main">
+        <Switch>
+          <Route path="/" exact component={HomeIndex} />
+          <Route path="/news" exact component={NewsIndex} />
+        </Switch>
+      </div>
+      
     </>
   );
 }

@@ -27,12 +27,12 @@ function HomeIndex() {
 
   return (
     <>
-      　　　　　　　　　　　　　　　　　　　　　　　　　　home<br />
-      　　　　　　　　　　　　　　　　　　　　　　　　　　<Link to="/news">news一覧へ</Link>
+      home<br />
+      <Link to="/news">news一覧へ</Link>
 
       {newses.map((news) => (
         <div key={news.id}>
-          　　　　　　　　　　　　　　　　　　　　　　　　　　{news.title}
+          {news.title}
         </div>
     ))}
     </>
