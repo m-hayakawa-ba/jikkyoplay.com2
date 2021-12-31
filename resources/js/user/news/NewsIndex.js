@@ -52,6 +52,7 @@ function NewsIndex() {
 
       <h1>ニュース一覧</h1>
 
+      {/* メインコンテンツ */}
       <div className="top__margin">
         <div className="top__news news__bg">
           {newses.data && newses.data.map((news) => (
@@ -63,6 +64,12 @@ function NewsIndex() {
         </div>
       </div>
 
+      {/* 戻るボタン */}
+      <Link to="/" className="standard_button btn_purple program__return">
+        戻る
+      </Link>
+
+      {/* ページネーション */}
       <div className="pagination-wrap pc-only">
         <Pagination
           activePage={newses.current_page}
