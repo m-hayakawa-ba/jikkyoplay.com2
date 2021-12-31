@@ -2289,7 +2289,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-helmet */ "./node_modules/react-helmet/es/Helmet.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
@@ -2306,7 +2305,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -2334,13 +2332,11 @@ function NewsIndex() {
     var pageQuery = new URLSearchParams(location);
     var pageNumber = (_pageQuery$get = pageQuery.get('page')) !== null && _pageQuery$get !== void 0 ? _pageQuery$get : 1;
     getNewses(pageNumber);
-    console.log('初回書き込みです');
   }, []); //ページネーションクリック持
 
   var runClickPagination = function runClickPagination(pageNumber) {
     getNewses(pageNumber);
     history.pushState({}, '', '?page=' + pageNumber);
-    console.log('ページネーションクリックです');
   }; //進む・戻る実行時
 
 
@@ -2350,7 +2346,6 @@ function NewsIndex() {
     var pageQuery = new URLSearchParams(location);
     var pageNumber = (_pageQuery$get2 = pageQuery.get('page')) !== null && _pageQuery$get2 !== void 0 ? _pageQuery$get2 : 1;
     getNewses(pageNumber);
-    console.log('戻る・進む実行時です');
   }; //DBからニュースの一覧情報を取得する
 
 
@@ -2362,22 +2357,55 @@ function NewsIndex() {
     });
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: ["news\u3067\u3059", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
-      to: "/",
-      children: "\u30C8\u30C3\u30D7\u30DA\u30FC\u30B8\u3078\u623B\u308B"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), newses.data && newses.data.map(function (news) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        children: news.title
-      }, news.id);
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_js_pagination__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      activePage: newses.current_page,
-      itemsCountPerPage: newses.per_page,
-      totalItemsCount: newses.total,
-      pageRangeDisplayed: "5",
-      onChange: runClickPagination,
-      itemClass: "page-item",
-      linkClass: "page-link"
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("main", {
+    className: "main-content news",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
+      children: "\u30CB\u30E5\u30FC\u30B9\u4E00\u89A7"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "top__margin",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "top__news news__bg",
+        children: newses.data && newses.data.map(function (news) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("a", {
+            href: news.url,
+            target: "blank",
+            className: "top__news__wrap news__wrap",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+              className: "top__news__title",
+              children: news.title
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+              className: "top__news__author",
+              children: [news.author, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {
+                className: "pc-br"
+              }), news.published_at]
+            })]
+          }, news.id);
+        })
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "pagination-wrap pc-only",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_js_pagination__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        activePage: newses.current_page,
+        itemsCountPerPage: newses.per_page,
+        totalItemsCount: newses.total,
+        pageRangeDisplayed: "7",
+        hideNavigation: "false",
+        onChange: runClickPagination,
+        itemClass: "pagination__item",
+        linkClass: "pagination__link"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "pagination-wrap sp-only",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_js_pagination__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        activePage: newses.current_page,
+        itemsCountPerPage: newses.per_page,
+        totalItemsCount: newses.total,
+        pageRangeDisplayed: "5",
+        hideNavigation: "false",
+        onChange: runClickPagination,
+        itemClass: "pagination__item",
+        linkClass: "pagination__link"
+      })
     })]
   });
 }

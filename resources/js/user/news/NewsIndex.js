@@ -18,14 +18,12 @@ function NewsIndex() {
     let pageQuery =  new URLSearchParams(location);
     let pageNumber = pageQuery.get('page') ?? 1;
     getNewses(pageNumber);
-    console.log('初回書き込みです');
   }, [])
 
   //ページネーションクリック持
   const runClickPagination = (pageNumber) => {
     getNewses(pageNumber);
     history.pushState({}, '', '?page=' + pageNumber);
-    console.log('ページネーションクリックです');
   };
 
   //進む・戻る実行時
@@ -33,7 +31,6 @@ function NewsIndex() {
     let pageQuery =  new URLSearchParams(location);
     let pageNumber = pageQuery.get('page') ?? 1;
     getNewses(pageNumber);
-    console.log('戻る・進む実行時です');
   }
 
   //DBからニュースの一覧情報を取得する
@@ -51,27 +48,47 @@ function NewsIndex() {
 
   return (
       
-    <>
-      newsです<br />
-      <Link to="/">トップページへ戻る</Link><br /><br />
+    <main className="main-content news">
 
-      {newses.data && newses.data.map((news) => (
-        <div key={news.id}>
-          {news.title}
+      <h1>ニュース一覧</h1>
+
+      <div className="top__margin">
+        <div className="top__news news__bg">
+          {newses.data && newses.data.map((news) => (
+            <a href={news.url} target="blank" className='top__news__wrap news__wrap' key={news.id}>
+              <div className="top__news__title">{news.title}</div>
+              <div className="top__news__author">{news.author}<br className="pc-br" />{news.published_at}</div>
+            </a>
+          ))}
         </div>
-      ))}
+      </div>
 
-      <Pagination
-        activePage={newses.current_page}
-        itemsCountPerPage={newses.per_page}
-        totalItemsCount={newses.total}
-        pageRangeDisplayed='5'
-        onChange={runClickPagination}
-        itemClass='page-item'
-        linkClass='page-link'
-      />
+      <div className="pagination-wrap pc-only">
+        <Pagination
+          activePage={newses.current_page}
+          itemsCountPerPage={newses.per_page}
+          totalItemsCount={newses.total}
+          pageRangeDisplayed='7'
+          hideNavigation="false"
+          onChange={runClickPagination}
+          itemClass='pagination__item'
+          linkClass='pagination__link'
+        />
+      </div>
+      <div className="pagination-wrap sp-only">
+        <Pagination
+          activePage={newses.current_page}
+          itemsCountPerPage={newses.per_page}
+          totalItemsCount={newses.total}
+          pageRangeDisplayed='5'
+          hideNavigation="false"
+          onChange={runClickPagination}
+          itemClass='pagination__item'
+          linkClass='pagination__link'
+        />
+      </div>
 
-    </>
+    </main>
   );
 }
 

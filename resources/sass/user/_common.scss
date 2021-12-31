@@ -35,7 +35,6 @@
         vertical-align: top;
     }
     a {
-        color: initial;
         text-decoration: none;
     }
 
@@ -589,7 +588,18 @@
     ////////////////////////////////////////////
     //            ページネーション            //
     ////////////////////////////////////////////
+    .pagination-wrap {
+      position: fixed;
+      bottom: 48px;
+      width: 92%;
+      @include mq() {
+        left: 0;
+        bottom: 64px;
+        width: 100%;
+      }
+    }
     .pagination {
+        
         display: flex;
         width: 100%;
         height: 0;
@@ -599,52 +609,54 @@
         font-size: 16px;
         line-height: 18px;
         @include mq() {
-            width: 864px;
-            position: fixed;
-            bottom: 64px;
-            left: 296px;
+          position: relative;
+          top: 0;
+          left: 160px;
+          width: 840px;
+          margin: 0 auto;
         }
 
-        &__link {
-            display: inline-block;
-            width: 38px;
-            height: 38px;
-            border: 1px solid #cdc;
-            margin: 0 2px;
-            text-align: center;
-            border-radius: 50%;
-            background-color: #fff;
+        &__item {
+          display: inline-block;
+          width: 38px;
+          height: 38px;
+          border: 1px solid #cdc;
+          margin: 0 2px;
+          text-align: center;
+          border-radius: 50%;
+          background-color: #fff;
+          font-size: 18px;
+          font-weight: bold;
+          color: #247;
+          text-decoration: none;
+          line-height: 40px;
+          box-shadow: 1px 1px 3px rgba(12, 18, 12, 0.50);
+          transition: 0.2s;
+          @include mq() {
+            position: relative;
+            bottom: 12px;
+            width: 46px;
+            height: 46px;
+            margin: 0 4px;
             font-size: 18px;
-            font-weight: bold;
-            color: #247;
-            text-decoration: none;
-            line-height: 40px;
-            box-shadow: 1px 1px 3px rgba(12, 18, 12, 0.50);
-            transition: 0.2s;
-            @include mq() {
-                position: relative;
-                bottom: 12px;
-                width: 46px;
-                height: 46px;
-                margin: 0 4px;
-                font-size: 18px;
-                line-height: 46px;
-            }
-            &:hover {
-                transform: scale(1.2, 1.2) rotate(0.001deg);
-                box-shadow: 3px 3px 4px rgba(12, 18, 12, 0.125);
-                -webkit-backface-visibility: hidden;
-                backface-visibility: hidden;
-            }
+            line-height: 46px;
+            cursor: pointer;
+          }
+          &:hover {
+              transform: scale(1.2, 1.2) rotate(0.001deg);
+              box-shadow: 3px 3px 4px rgba(12, 18, 12, 0.125);
+              -webkit-backface-visibility: hidden;
+              backface-visibility: hidden;
+          }
+        }
 
-            &__disabled {
+        .active {
+            pointer-events: none;
+            color: #888;
+            background-color: #ddd;
+            @include mq() {
                 pointer-events: none;
-                color: #888;
-                background-color: #ddd;
-                @include mq() {
-                    pointer-events: none;
-                    color: #bbb;
-                }
+                color: #bbb;
             }
         }
     }
