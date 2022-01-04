@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Services\NewsService;
+use App\Services\ThumbnailService;
 
 class ApiMainController extends Controller
 {
@@ -14,12 +15,19 @@ class ApiMainController extends Controller
      */
     public function __construct(
         private NewsService $newsService,
+        private ThumbnailService $thumbnailService,
     ) {
     }
 
     public function index()
     {
+        //メインタイトルのサムネイルを取得
+        $thumbnails = $this->thumbnailService->getTitleThumbnail();
+
+        //トップページに表示させるニュースを取得
         $newses = $this->newsService->getNewsesTop();
-        return response()->json($newses, 200);
+
+        //取得したデータをJSONで返す
+        return response()->json(compact('thumbnails', 'newses'), 200);
     }
 }

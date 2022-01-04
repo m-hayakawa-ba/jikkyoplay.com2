@@ -4,10 +4,6 @@ namespace App\Services;
 
 use App\Models\News;
 
-/**
- * Class StaffService
- * @package App\Services\Home
- */
 final class NewsService
 {
     //定数
