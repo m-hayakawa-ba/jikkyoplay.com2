@@ -4,6 +4,7 @@ import {Helmet} from 'react-helmet';
 import axios from 'axios';
 
 import MainTitle from '@/user/common_part/MainTitle';
+import SearchBox from '@/user/common_part/SearchBox';
 
 function HomeIndex() {
 
@@ -32,7 +33,11 @@ function HomeIndex() {
   return (
     <main className="main-content top">
 
+      {/* サイトロゴ */}
       <MainTitle thumbnails={thumbnails}/>
+
+      {/* 検索ボックス */}
+      <SearchBox />
 
       <div className="top__announce">
         <p>
