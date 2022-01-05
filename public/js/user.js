@@ -2283,9 +2283,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var SearchBox = function SearchBox() {
+  function unescapeHTML(html) {
+    var escapeEl = document.createElement('textarea');
+    escapeEl.innerHTML = html;
+    return escapeEl.textContent;
+  }
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
     id: "js_menu",
-    "class": "easysearch",
+    className: "easysearch",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
       action: "/result",
       method: "get",
@@ -2299,8 +2305,8 @@ var SearchBox = function SearchBox() {
         value: "normal"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
         type: "submit",
-        value: "&#xe90d",
-        "class": "standard_button btn_purple easysearch__submit"
+        value: unescapeHTML('&#xe90d'),
+        className: "standard_button btn_purple easysearch__submit"
       })]
     })
   });
