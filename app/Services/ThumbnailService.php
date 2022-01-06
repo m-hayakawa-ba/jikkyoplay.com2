@@ -17,17 +17,24 @@ final class ThumbnailService
     /**
      * メインタイトルのサムネイルリストを取得
      * 
-     * @return array サムネイルのURLの配列
+     * @return string サムネイルのURLの配列をjsonにしたもの
      */
-    public function getTitleThumbnail() :array
+    public function getTitleThumbnail() :string
     {
         //キャッシュからリストを取得
         $thumbnails = \Cache::remember('titleThumbnail', '1440', function(){
             return Program::select('image_url')
                 ->limit(10)
                 ->orderBy('published_at','desc')
-                ->get()->toArray();
+                ->get()
+                ->toJson(JSON_UNESCAPED_UNICODE);
         });
+
+        $thumbnails = Program::select('image_url')
+            ->limit(10)
+            ->orderBy('published_at','desc')
+            ->get()
+            ->toJson(JSON_UNESCAPED_UNICODE);
         
         //サムネイルのリストを返す
         return $thumbnails;

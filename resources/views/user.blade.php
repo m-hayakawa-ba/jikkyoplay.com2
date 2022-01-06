@@ -16,6 +16,12 @@
     {{-- cssの読み込み --}}
     <link rel="stylesheet" href="/css/user.css"> 
 
+    {{-- 共通のデータを保存 --}}
+    <script>
+      window.thumbnails = {!! $thumbnails !!};
+      console.log(window.thumbnails);
+    </script>
+
   </head>
 
   {{-- body情報 --}}

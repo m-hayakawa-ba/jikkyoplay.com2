@@ -4,6 +4,10 @@ import {Helmet} from 'react-helmet';
 import axios from 'axios';
 import Pagination from 'react-js-pagination';
 
+import BreadCrumb from '@/user/common_part/BreadCrumb';
+import MainTitle from '@/user/common_part/MainTitle';
+import SearchBox from '@/user/common_part/SearchBox';
+
 function NewsIndex() {
 
   //valuesの状態を管理する
@@ -47,55 +51,67 @@ function NewsIndex() {
 
 
   return (
-      
-    <main className="main-content news">
+    <>
 
-      <h1>ニュース一覧</h1>
+      {/* パンくずリスト */}
+      <BreadCrumb />
 
-      {/* メインコンテンツ */}
-      <div className="top__margin">
-        <div className="top__news news__bg">
-          {newses.data && newses.data.map((news) => (
-            <a href={news.url} target="blank" className='top__news__wrap news__wrap' key={news.id}>
-              <div className="top__news__title">{news.title}</div>
-              <div className="top__news__author">{news.author}<br className="pc-br" />{news.published_date}</div>
-            </a>
-          ))}
+      {/* サイトロゴ */}
+      <MainTitle thumbnails={thumbnails}/>
+  
+      {/* 検索ボックス */}
+      <SearchBox />
+
+      <main className="main-content news">
+  
+        <h1>ニュース一覧</h1>
+  
+        {/* メインコンテンツ */}
+        <div className="top__margin">
+          <div className="top__news news__bg">
+            {newses.data && newses.data.map((news) => (
+              <a href={news.url} target="blank" className='top__news__wrap news__wrap' key={news.id}>
+                <div className="top__news__title">{news.title}</div>
+                <div className="top__news__author">{news.author}<br className="pc-br" />{news.published_date}</div>
+              </a>
+            ))}
+          </div>
         </div>
-      </div>
+  
+        {/* 戻るボタン */}
+        <Link to="/" className="standard_button btn_purple program__return">
+          戻る
+        </Link>
+  
+        {/* ページネーション */}
+        <div className="pagination-wrap pc-only">
+          <Pagination
+            activePage={newses.current_page}
+            itemsCountPerPage={newses.per_page}
+            totalItemsCount={newses.total}
+            pageRangeDisplayed='7'
+            hideNavigation="false"
+            onChange={runClickPagination}
+            itemClass='pagination__item'
+            linkClass='pagination__link'
+          />
+        </div>
+        <div className="pagination-wrap sp-only">
+          <Pagination
+            activePage={newses.current_page}
+            itemsCountPerPage={newses.per_page}
+            totalItemsCount={newses.total}
+            pageRangeDisplayed='5'
+            hideNavigation="false"
+            onChange={runClickPagination}
+            itemClass='pagination__item'
+            linkClass='pagination__link'
+          />
+        </div>
+  
+      </main>
 
-      {/* 戻るボタン */}
-      <Link to="/" className="standard_button btn_purple program__return">
-        戻る
-      </Link>
-
-      {/* ページネーション */}
-      <div className="pagination-wrap pc-only">
-        <Pagination
-          activePage={newses.current_page}
-          itemsCountPerPage={newses.per_page}
-          totalItemsCount={newses.total}
-          pageRangeDisplayed='7'
-          hideNavigation="false"
-          onChange={runClickPagination}
-          itemClass='pagination__item'
-          linkClass='pagination__link'
-        />
-      </div>
-      <div className="pagination-wrap sp-only">
-        <Pagination
-          activePage={newses.current_page}
-          itemsCountPerPage={newses.per_page}
-          totalItemsCount={newses.total}
-          pageRangeDisplayed='5'
-          hideNavigation="false"
-          onChange={runClickPagination}
-          itemClass='pagination__item'
-          linkClass='pagination__link'
-        />
-      </div>
-
-    </main>
+    </>
   );
 }
 

@@ -3,13 +3,13 @@ import {Link} from 'react-router-dom';
 import {Helmet} from 'react-helmet';
 import axios from 'axios';
 
+import BreadCrumb from '@/user/common_part/BreadCrumb';
 import MainTitle from '@/user/common_part/MainTitle';
 import SearchBox from '@/user/common_part/SearchBox';
 
 function HomeIndex() {
 
   //newsesの状態を管理する
-  const [thumbnails, setThumbnails] = useState([]);
   const [newses, setNewses] = useState([]);
 
   //画面に到着したらnewsデータを読み込む
@@ -22,7 +22,6 @@ function HomeIndex() {
     axios
       .get('/api/main')
       .then(response => {
-        setThumbnails(response.data.thumbnails);
         setNewses(response.data.newses);
       })
       .catch(() => {
@@ -31,7 +30,10 @@ function HomeIndex() {
   }
 
   return (
-    <main className="main-content top">
+    <>
+
+      {/* パンくずリスト */}
+      <BreadCrumb />
 
       {/* サイトロゴ */}
       <MainTitle thumbnails={thumbnails}/>
@@ -39,23 +41,27 @@ function HomeIndex() {
       {/* 検索ボックス */}
       <SearchBox />
 
-      <div className="top__announce">
-        <p>
-          <span>このサイトは、ゲームの実況動画part1を集めたサイトです。</span><br />
-          <span>まずは上の検索枠で、好きなゲームを検索してみてくださいね！</span>
-        </p>
-      </div>
+      <main className="main-content top">
 
-      home<br />
-      <Link to="/news">news一覧へ</Link>
-
-      {newses.map((news) => (
-        <div key={news.id}>
-          {news.title}
+        <div className="top__announce">
+          <p>
+            <span>このサイトは、ゲームの実況動画part1を集めたサイトです。</span><br />
+            <span>まずは上の検索枠で、好きなゲームを検索してみてくださいね！</span>
+          </p>
         </div>
-      ))}
+  
+        home<br />
+        <Link to="/news">news一覧へ</Link>
+  
+        {newses.map((news) => (
+          <div key={news.id}>
+            {news.title}
+          </div>
+        ))}
 
-    </main>
+      </main>
+
+    </>
   );
 }
 
