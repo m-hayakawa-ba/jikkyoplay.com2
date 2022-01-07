@@ -15,6 +15,7 @@ import LeftNavi from '@/user/common_part/LeftNavi';
 // メインコンテンツと下層ページ
 import HomeIndex from '@/user/home/HomeIndex';
 import NewsIndex from '@/user/news/NewsIndex';
+import SearchIndex from '@/user/search/SearchIndex';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={HomeIndex} />
           <Route path="/news" exact component={NewsIndex} />
+          <Route path="/search" exact component={SearchIndex} />
         </Switch>
       </div>
       

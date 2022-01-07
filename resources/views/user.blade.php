@@ -8,6 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="keywords" content="ゲーム,ゲーム実況,実況プレイ,part1,まとめ,実況プレイ動画,You Tube,ニコニコ動画">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- jsの読み込み --}}
     <script src="/js/user.js" defer></script>
@@ -19,7 +20,6 @@
     {{-- 共通のデータを保存 --}}
     <script>
       window.thumbnails = {!! $thumbnails !!};
-      console.log(window.thumbnails);
     </script>
 
   </head>
