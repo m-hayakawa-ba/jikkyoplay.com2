@@ -6,6 +6,7 @@
  */
 
 import React from 'react';
+import {Link, useLocation} from 'react-router-dom';
 
 import Webp from '@/user/utility/Webp';
 
@@ -45,12 +46,12 @@ const MainTitle = (props) => {
       </div>
     
       {/* タイトルロゴ */}
-      <a href="/" className="maintitle__logo-sp sp-only">
+      <Link to="/" className="maintitle__logo-sp sp-only">
         <Webp src="logo" alt="実況プレイみるサイト メインロゴ"/>
-      </a>
-      <a href="/" className="maintitle__logo-pc pc-only">
+      </Link>
+      <Link to="/" className="maintitle__logo-pc pc-only">
         <Webp src="logo" alt="実況プレイみるサイト メインロゴ"/>
-      </a>
+      </Link>
   
     </header>
   );

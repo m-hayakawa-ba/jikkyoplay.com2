@@ -9,20 +9,20 @@ import SearchBox from '@/user/common_part/SearchBox';
 
 function HomeIndex() {
 
-  //newsesの状態を管理する
-  const [newses, setNewses] = useState([]);
+  //DBから取得したデータを管理する
+  const [data, setData] = useState([]);
 
   //画面に到着したらnewsデータを読み込む
   useEffect(() => {
-    getNewses();
+    getDatas();
   },[])
 
-  //一覧情報を取得しnewsesにセットする
-  const getNewses = () => {
+  //トップページに必要な情報を取得し、変数にセットする
+  const getDatas = () => {
     axios
       .get('/api/main')
       .then(response => {
-        setNewses(response.data.newses);
+        setData(response.data);
       })
       .catch(() => {
         console.log('通信に失敗しました');
@@ -49,13 +49,35 @@ function HomeIndex() {
             <span>まずは上の検索枠で、好きなゲームを検索してみてくださいね！</span>
           </p>
         </div>
+
+        {/* ゲーム実況ニュース */}
+        <div className="top__margin">
+          <div className="top__subtitle">
+            <h2>
+              <Link to="/news">
+                <span className="icon-rss"></span> ゲーム実況ニュース
+              </Link>
+            </h2>
+            <span>毎日更新！</span>
+          </div>
+          <div className="top__news">
+            {data.newses && data.newses.map((news) => (
+              <a href={news.url} target="blank" className='top__news__wrap' key={news.id}>
+                <div className="top__news__title">{news.title}</div>
+                <div className="top__news__author">{news.author} {news.published_at}</div>
+              </a>
+            ))}
+          </div>
+          <div style={{textAlign: 'right'}}>
+            <Link to="/news" className="top__next-arrow" style={{margin: '0 0 0 auto'}}>
+              <span className="icon-chevron-circle-right"></span> 過去のニュースを見る！
+            </Link>
+          </div>
+        </div>
   
-        home<br />
-        <Link to="/news">news一覧へ</Link>
-  
-        {newses.map((news) => (
-          <div key={news.id}>
-            {news.title}
+        {data.programs && data.programs.map((programs) => (
+          <div key={programs.id}>
+            {programs.title}
           </div>
         ))}
 

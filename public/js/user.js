@@ -2270,6 +2270,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _user_utility_Webp__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/user/utility/Webp */ "./resources/js/user/utility/Webp.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /**
@@ -2278,6 +2279,7 @@ __webpack_require__.r(__webpack_exports__);
  * 
  * @param thumbnails 表示させるサムネイルの配列
  */
+
 
 
 
@@ -2296,15 +2298,15 @@ var MainTitle = function MainTitle(props) {
       style: {
         backgroundImage: "url(" + (props.thumbnails[5] && props.thumbnails[5].image_url) + "), " + "url(" + (props.thumbnails[6] && props.thumbnails[6].image_url) + "), " + "url(" + (props.thumbnails[7] && props.thumbnails[7].image_url) + "), " + "url(" + (props.thumbnails[8] && props.thumbnails[8].image_url) + "), " + "url(" + (props.thumbnails[9] && props.thumbnails[9].image_url) + "), " + "url(" + (props.thumbnails[5] && props.thumbnails[5].image_url) + "), " + "url(" + (props.thumbnails[6] && props.thumbnails[6].image_url) + "), " + "url(" + (props.thumbnails[7] && props.thumbnails[7].image_url) + "), " + "url(" + (props.thumbnails[8] && props.thumbnails[8].image_url) + "), " + "url(" + (props.thumbnails[9] && props.thumbnails[9].image_url) + ")"
       }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
-      href: "/",
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+      to: "/",
       className: "maintitle__logo-sp sp-only",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_user_utility_Webp__WEBPACK_IMPORTED_MODULE_1__["default"], {
         src: "logo",
         alt: "\u5B9F\u6CC1\u30D7\u30EC\u30A4\u307F\u308B\u30B5\u30A4\u30C8 \u30E1\u30A4\u30F3\u30ED\u30B4"
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
-      href: "/",
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+      to: "/",
       className: "maintitle__logo-pc pc-only",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_user_utility_Webp__WEBPACK_IMPORTED_MODULE_1__["default"], {
         src: "logo",
@@ -2433,20 +2435,20 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function HomeIndex() {
-  //newsesの状態を管理する
+  //DBから取得したデータを管理する
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
-      newses = _useState2[0],
-      setNewses = _useState2[1]; //画面に到着したらnewsデータを読み込む
+      data = _useState2[0],
+      setData = _useState2[1]; //画面に到着したらnewsデータを読み込む
 
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    getNewses();
-  }, []); //一覧情報を取得しnewsesにセットする
+    getDatas();
+  }, []); //トップページに必要な情報を取得し、変数にセットする
 
-  var getNewses = function getNewses() {
+  var getDatas = function getDatas() {
     axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/main').then(function (response) {
-      setNewses(response.data.newses);
+      setData(response.data);
     })["catch"](function () {
       console.log('通信に失敗しました');
     });
@@ -2466,13 +2468,55 @@ function HomeIndex() {
             children: "\u307E\u305A\u306F\u4E0A\u306E\u691C\u7D22\u67A0\u3067\u3001\u597D\u304D\u306A\u30B2\u30FC\u30E0\u3092\u691C\u7D22\u3057\u3066\u307F\u3066\u304F\u3060\u3055\u3044\u306D\uFF01"
           })]
         })
-      }), "home", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
-        to: "/news",
-        children: "news\u4E00\u89A7\u3078"
-      }), newses.map(function (news) {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        className: "top__margin",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          className: "top__subtitle",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
+              to: "/news",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+                className: "icon-rss"
+              }), " \u30B2\u30FC\u30E0\u5B9F\u6CC1\u30CB\u30E5\u30FC\u30B9"]
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+            children: "\u6BCE\u65E5\u66F4\u65B0\uFF01"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          className: "top__news",
+          children: data.newses && data.newses.map(function (news) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("a", {
+              href: news.url,
+              target: "blank",
+              className: "top__news__wrap",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                className: "top__news__title",
+                children: news.title
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+                className: "top__news__author",
+                children: [news.author, " ", news.published_at]
+              })]
+            }, news.id);
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          style: {
+            textAlign: 'right'
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
+            to: "/news",
+            className: "top__next-arrow",
+            style: {
+              margin: '0 0 0 auto'
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+              className: "icon-chevron-circle-right"
+            }), " \u904E\u53BB\u306E\u30CB\u30E5\u30FC\u30B9\u3092\u898B\u308B\uFF01"]
+          })
+        })]
+      }), data.programs && data.programs.map(function (programs) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-          children: news.title
-        }, news.id);
+          children: programs.title
+        }, programs.id);
       })]
     })]
   });
@@ -2529,7 +2573,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function NewsIndex() {
-  //valuesの状態を管理する
+  //newsの状態を管理する
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
     data: {}
   }]),
@@ -2541,30 +2585,30 @@ function NewsIndex() {
   var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useLocation)().search; //初回読み込み持
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var _pageQuery$get;
+    var _page$get;
 
-    var pageQuery = new URLSearchParams(location);
-    var pageNumber = (_pageQuery$get = pageQuery.get('page')) !== null && _pageQuery$get !== void 0 ? _pageQuery$get : 1;
-    getNewses(pageNumber);
+    var page = new URLSearchParams(location);
+    var queryPage = (_page$get = page.get('page')) !== null && _page$get !== void 0 ? _page$get : 1;
+    getNewses(queryPage);
   }, []); //ページネーションクリック持
 
-  var runClickPagination = function runClickPagination(pageNumber) {
-    getNewses(pageNumber);
-    history.pushState({}, '', '?page=' + pageNumber);
+  var runClickPagination = function runClickPagination(queryPage) {
+    getNewses(queryPage);
+    history.pushState({}, '', '?page=' + queryPage);
   }; //進む・戻る実行時
 
 
   window.onpopstate = function () {
-    var _pageQuery$get2;
+    var _page$get2;
 
-    var pageQuery = new URLSearchParams(location);
-    var pageNumber = (_pageQuery$get2 = pageQuery.get('page')) !== null && _pageQuery$get2 !== void 0 ? _pageQuery$get2 : 1;
-    getNewses(pageNumber);
+    var page = new URLSearchParams(location);
+    var queryPage = (_page$get2 = page.get('page')) !== null && _page$get2 !== void 0 ? _page$get2 : 1;
+    getNewses(queryPage);
   }; //DBからニュースの一覧情報を取得する
 
 
-  var getNewses = function getNewses(pageNumber) {
-    axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/news?page=' + pageNumber).then(function (response) {
+  var getNewses = function getNewses(queryPage) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/news?page=' + queryPage).then(function (response) {
       setNewses(response.data);
     })["catch"](function () {
       console.log('通信に失敗しました');
@@ -2648,14 +2692,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-helmet */ "./node_modules/react-helmet/es/Helmet.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _user_common_part_BreadCrumb__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/user/common_part/BreadCrumb */ "./resources/js/user/common_part/BreadCrumb.js");
-/* harmony import */ var _user_common_part_MainTitle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/user/common_part/MainTitle */ "./resources/js/user/common_part/MainTitle.js");
-/* harmony import */ var _user_common_part_SearchBox__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/user/common_part/SearchBox */ "./resources/js/user/common_part/SearchBox.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_js_pagination__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-js-pagination */ "./node_modules/react-js-pagination/dist/Pagination.js");
+/* harmony import */ var _user_common_part_BreadCrumb__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/user/common_part/BreadCrumb */ "./resources/js/user/common_part/BreadCrumb.js");
+/* harmony import */ var _user_common_part_MainTitle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/user/common_part/MainTitle */ "./resources/js/user/common_part/MainTitle.js");
+/* harmony import */ var _user_common_part_SearchBox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/user/common_part/SearchBox */ "./resources/js/user/common_part/SearchBox.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2679,22 +2724,48 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function SearchIndex() {
-  //newsesの状態を管理する
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
-      _useState2 = _slicedToArray(_useState, 2),
-      newses = _useState2[0],
-      setNewses = _useState2[1];
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_user_common_part_BreadCrumb__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_user_common_part_MainTitle__WEBPACK_IMPORTED_MODULE_4__["default"], {
+function SearchIndex() {
+  //newsの状態を管理する
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
+    data: {}
+  }]),
+      _useState2 = _slicedToArray(_useState, 2),
+      programs = _useState2[0],
+      setPrograms = _useState2[1]; //現在見ているページ
+
+
+  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useLocation)().search; //初回読み込み持
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var _page$get, _page$get2;
+
+    var page = new URLSearchParams(location);
+    var queryPage = (_page$get = page.get('page')) !== null && _page$get !== void 0 ? _page$get : 1;
+    var queryWord = (_page$get2 = page.get('word')) !== null && _page$get2 !== void 0 ? _page$get2 : '';
+    getPrograms(queryPage, queryWord);
+  }, []); //DBから動画の一覧情報を取得する
+
+  var getPrograms = function getPrograms(queryPage, queryWord) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/search?word=' + queryWord + '&page=' + queryPage).then(function (response) {
+      setPrograms(response.data);
+    })["catch"](function () {
+      console.log('通信に失敗しました');
+    });
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_user_common_part_BreadCrumb__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_user_common_part_MainTitle__WEBPACK_IMPORTED_MODULE_5__["default"], {
       thumbnails: thumbnails
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_user_common_part_SearchBox__WEBPACK_IMPORTED_MODULE_5__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("main", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_user_common_part_SearchBox__WEBPACK_IMPORTED_MODULE_6__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("main", {
       className: "main-content top",
-      children: ["result", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
-        to: "/news",
-        children: "news\u4E00\u89A7\u3078"
-      })]
+      children: programs.data && programs.data.map(function (program) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("p", {
+            children: [program.id, " - ", program.title]
+          })
+        }, program.id);
+      })
     })]
   });
 }

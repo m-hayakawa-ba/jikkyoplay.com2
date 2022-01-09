@@ -29,12 +29,6 @@ final class ThumbnailService
                 ->get()
                 ->toJson(JSON_UNESCAPED_UNICODE);
         });
-
-        $thumbnails = Program::select('image_url')
-            ->limit(10)
-            ->orderBy('published_at','desc')
-            ->get()
-            ->toJson(JSON_UNESCAPED_UNICODE);
         
         //サムネイルのリストを返す
         return $thumbnails;

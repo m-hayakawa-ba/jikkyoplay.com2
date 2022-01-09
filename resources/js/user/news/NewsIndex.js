@@ -10,7 +10,7 @@ import SearchBox from '@/user/common_part/SearchBox';
 
 function NewsIndex() {
 
-  //valuesの状態を管理する
+  //newsの状態を管理する
   const [newses, setNewses] = useState([{data: {}}]);
 
   //現在見ているページ
@@ -19,28 +19,28 @@ function NewsIndex() {
   
   //初回読み込み持
   useEffect(() => {
-    let pageQuery =  new URLSearchParams(location);
-    let pageNumber = pageQuery.get('page') ?? 1;
-    getNewses(pageNumber);
+    let page =  new URLSearchParams(location);
+    let queryPage = page.get('page') ?? 1;
+    getNewses(queryPage);
   }, [])
 
   //ページネーションクリック持
-  const runClickPagination = (pageNumber) => {
-    getNewses(pageNumber);
-    history.pushState({}, '', '?page=' + pageNumber);
+  const runClickPagination = (queryPage) => {
+    getNewses(queryPage);
+    history.pushState({}, '', '?page=' + queryPage);
   };
 
   //進む・戻る実行時
   window.onpopstate = function() {
-    let pageQuery =  new URLSearchParams(location);
-    let pageNumber = pageQuery.get('page') ?? 1;
-    getNewses(pageNumber);
+    let page =  new URLSearchParams(location);
+    let queryPage = page.get('page') ?? 1;
+    getNewses(queryPage);
   }
 
   //DBからニュースの一覧情報を取得する
-  const getNewses = (pageNumber) => {
+  const getNewses = (queryPage) => {
     axios
-      .get('/api/news?page=' + pageNumber)
+      .get('/api/news?page=' + queryPage)
       .then(response => {
         setNewses(response.data);
       })
