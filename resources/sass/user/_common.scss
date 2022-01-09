@@ -1015,6 +1015,7 @@
 
         &__wrap {
             display: block;
+            position: relative;
             border-radius: 8px;
             margin: 4px 0;
             padding: 6px 8px;
@@ -1024,12 +1025,13 @@
             transition: 0.3s;
             @include mq() {
                 display: flex;
-                align-items: flex-end;
+                align-items: center;
                 background-color: unset;
                 box-shadow: none;
                 margin: 0 8px;
                 padding: 6px 12px;
                 width: calc(100% - 16px);
+                height: 45px;
                 border-bottom: dashed 1px #eee;
                 border-radius: 0;
             }
@@ -1080,6 +1082,9 @@
             font-size: 13px;
             color: #ccc;
             @include mq() {
+                position: absolute;
+                right: 12px;
+                bottom: 6px;
                 width: 35%;
                 text-align: right;
             }
@@ -1160,8 +1165,7 @@
         margin: 10px 0;
         @include mq() {
             margin: 0 auto;
-            padding: 10px 12px;
-            align-items: flex-start;
+            padding: 6px 12px;
         }
 
         &:nth-child(2),

@@ -64,7 +64,7 @@ function HomeIndex() {
             {data.newses && data.newses.map((news) => (
               <a href={news.url} target="blank" className='top__news__wrap' key={news.id}>
                 <div className="top__news__title">{news.title}</div>
-                <div className="top__news__author">{news.author} {news.published_at}</div>
+                <div className="top__news__author">{news.author} {news.published_date}</div>
               </a>
             ))}
           </div>

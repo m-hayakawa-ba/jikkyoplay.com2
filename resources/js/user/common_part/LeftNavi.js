@@ -16,12 +16,12 @@ function LeftNavi() {
     
         {/* メインパネル */}
         <div className="navi__menu">
-            <a href="/"><span><span className="icon-home"></span></span>トップページ</a>
-            <a href="/result"><span><span className="icon-tv"></span></span>全動画一覧</a>
-            <a href="/search"><span><span className="icon-search"></span></span>詳細検索</a>
-            <a href="/review"><span><span className="icon-photo-video"></span></span>動画レビュー</a>
-            <a href="/ranking"><span><span className="icon-trophy"></span></span>ランキング</a>
-            <a href="/history"><span><span className="icon-history"></span></span>視聴履歴</a>
+          <Link to="/"><span><span className="icon-home"></span></span>トップページ</Link>
+          <a href="/result"><span><span className="icon-tv"></span></span>全動画一覧</a>
+          <a href="/search"><span><span className="icon-search"></span></span>詳細検索</a>
+          <a href="/review"><span><span className="icon-photo-video"></span></span>動画レビュー</a>
+          <a href="/ranking"><span><span className="icon-trophy"></span></span>ランキング</a>
+          <a href="/history"><span><span className="icon-history"></span></span>視聴履歴</a>
         </div>
     
       </div>

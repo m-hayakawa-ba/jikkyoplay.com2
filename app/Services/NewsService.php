@@ -30,13 +30,21 @@ final class NewsService
      */
     public function getNewsesTop()
     {
-        return $this->newsModel
+        $newses = $this->newsModel
             ->select(['id', 'title', 'author', 'url', 'published_at'])
             ->where('flag_enabled', 1)
             ->orderBy('published_at', 'desc')
             ->orderBy('id', 'desc')
             ->limit(self::TOPPAGE_LIMIT)
             ->get();
+        
+        //日付の表記を変換
+        foreach($newses as &$news) {
+            $news->published_date = $this->formatPublishedAt($news->published_at);
+        }
+    
+        //データを返す
+        return $newses;
     }
 
     /**
@@ -54,10 +62,21 @@ final class NewsService
         
         //日付の表記を変換
         foreach($newses as &$news) {
-            $news->published_date = \DateTime::createFromFormat('Y-m-d H:i:s', $news->published_at)->format('Y年n月j日');
+            $news->published_date = $this->formatPublishedAt($news->published_at);
         }
 
         //データを返す
         return $newses;
+    }
+
+
+    /**
+     * published_atの表記を整形
+     * 
+     * @param stirng published_at Y-m-d H:i:s 形式の日時
+     */
+    private function formatPublishedAt(string $published_at)
+    {
+        return \DateTime::createFromFormat('Y-m-d H:i:s', $published_at)->format('Y年n月j日');
     }
 }
