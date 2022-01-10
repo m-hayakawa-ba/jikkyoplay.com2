@@ -16,6 +16,7 @@ import LeftNavi from '@/user/common_part/LeftNavi';
 import HomeIndex from '@/user/home/HomeIndex';
 import NewsIndex from '@/user/news/NewsIndex';
 import SearchIndex from '@/user/search/SearchIndex';
+import ProgramShow from '@/user/program/ProgramShow';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/" exact component={HomeIndex} />
           <Route path="/news" exact component={NewsIndex} />
           <Route path="/search" exact component={SearchIndex} />
+          <Route path="/program/:program_id" exact component={ProgramShow} />
         </Switch>
       </div>
       

@@ -87,9 +87,8 @@ function HomeIndex() {
 
           <div className="top__movielist">
             {data.programs && data.programs.map((program, index) => (
-              <div className={ index >= 4 ? 'pc-only' : '' }>
+              <div className={ index >= 4 ? 'pc-only' : '' } key={ program.id }>
                 <ProgramList
-                  key={ program.id }
                   program={ program }
                   backgournd_color_pc={ (index + Math.floor(index/4))%2 ? 'white' : 'black' }
                   backgournd_color_sp={ index%2 ? 'white' : 'black' }
