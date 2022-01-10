@@ -19,6 +19,7 @@
 
     {{-- 共通のデータを保存 --}}
     <script>
+      window.constants = {!! json_encode(config('constants')) !!};
       window.thumbnails = {!! $thumbnails !!};
     </script>
 

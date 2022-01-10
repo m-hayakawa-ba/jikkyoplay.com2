@@ -2,14 +2,11 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Facades\DB;
 use App\Models\Program;
 
 final class SearchService
 {
-    //定数
-    const TOPPAGE_LIMIT = 8;
-    const PAGINATE_LIMIT = 24;
-
     /**
      * コンストラクタ
      */
@@ -25,17 +22,30 @@ final class SearchService
      */
     public function searchProgramsTop()
     {
-        $query = $this->programModel
+        //DBからデータを取得
+        $programs = $this->programModel
             ->select(
                 'programs.id',
                 'programs.title',
-                \DB::raw('DATE(published_at) as published_date'))
+                'programs.image_url',
+                'programs.view_count',
+                'programs.published_at',
+                'creaters.user_icon_url',
+                'creaters.name as creater_name',
+                DB::raw('DATE(published_at) as published_date'))
             ->join('creaters', 'programs.creater_id', '=', 'creaters.id')
             ->orderBy('published_date', 'desc')
-            ->orderBy('programs.view_count')
-            ->limit(self::TOPPAGE_LIMIT);
+            ->orderBy('programs.view_count', 'desc')
+            ->limit(config('constants.LIMIT_PROGRAM_TOPPAGE'))
+            ->get();
+        
+        //日付の表記を変換
+        foreach($programs as &$program) {
+            $program->published_date = $this->formatPublishedAt($program->published_at);
+        }
 
-        return $query->get();
+        //データを返す
+        return $programs;
     }
 
     /**
@@ -66,7 +76,18 @@ final class SearchService
         }
 
         //検索結果を返す
-        return $query->paginate(self::PAGINATE_LIMIT);
+        return $query->paginate(config('constants.LIMIT_PROGRAM_SEARCH'));
+    }
+
+
+    /**
+     * published_atの表記を整形
+     * 
+     * @param stirng published_at Y-m-d H:i:s 形式の日時
+     */
+    private function formatPublishedAt(string $published_at)
+    {
+        return \DateTime::createFromFormat('Y-m-d H:i:s', $published_at)->format('Y/n/j');
     }
 
 }

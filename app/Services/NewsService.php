@@ -35,7 +35,7 @@ final class NewsService
             ->where('flag_enabled', 1)
             ->orderBy('published_at', 'desc')
             ->orderBy('id', 'desc')
-            ->limit(self::TOPPAGE_LIMIT)
+            ->limit(config('constants.LIMIT_NEWS_TOPPAGE'))
             ->get();
         
         //日付の表記を変換
@@ -58,7 +58,7 @@ final class NewsService
             ->where('flag_enabled', 1)
             ->orderBy('published_at', 'desc')
             ->orderBy('id', 'desc')
-            ->paginate(self::PAGINATE_LIMIT);
+            ->paginate(config('constants.LIMIT_NEWS_PAGINATE'));
         
         //日付の表記を変換
         foreach($newses as &$news) {

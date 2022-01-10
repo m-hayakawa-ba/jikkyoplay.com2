@@ -749,18 +749,23 @@
         }
     
         &__sizing-thumb {
-            width: 50%;
-            position: relative;
-            height: auto;
-            @include mq() {
-                width: 186px;
-                margin: 1px auto;
-            }
-            &:before {
-                content: "";
-                display: block;
-                padding-top: 56.25%;
-            }
+          position: relative;
+          width: 50%;
+          padding-top: 28.125%;
+          @include mq() {
+            width: 186px;
+            padding-top: 186px * 0.5625;
+            margin: 1px auto;
+          }
+          img {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 1px 1px 2px #404040c0;
+          }
         }
     
         &__sizing-caption {
@@ -1039,10 +1044,10 @@
                 background-color: #448;
             }
             &:first-child {
-                margin-top: 6px;
+                margin-top: 2px;
             }
             &:last-child {
-                margin-bottom: 8px;
+                margin-bottom: 2px;
                 border-bottom: unset;
             }
 
