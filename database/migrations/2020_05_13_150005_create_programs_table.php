@@ -23,7 +23,7 @@ class CreateProgramsTable extends Migration
             $table->integer('creater_id')->unsigned();
             $table->integer('game_id')->unsigned();
             $table->integer('voice_id')->unsigned();
-            $table->timestamp('published_at')->nullable();
+            $table->timestamp('published_at')->nullable()->index();
             $table->timestamps();
         });
 

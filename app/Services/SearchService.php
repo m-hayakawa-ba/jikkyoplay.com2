@@ -23,6 +23,22 @@ final class SearchService
     public function searchProgramsTop()
     {
         //DBからデータを取得
+        // $programs = $this->programModel
+        //     ->select(
+        //         'programs.id',
+        //         'programs.title',
+        //         'programs.image_url',
+        //         'programs.view_count',
+        //         'programs.published_at',
+        //         'creaters.user_icon_url',
+        //         'creaters.name as creater_name',
+        //         DB::raw('DATE(published_at) as published_date'))
+        //     ->join('creaters', 'programs.creater_id', '=', 'creaters.id')
+        //     ->orderBy('published_date', 'desc')
+        //     ->orderBy('programs.view_count', 'desc')
+        //     ->limit(config('constants.LIMIT_PROGRAM_TOPPAGE'))
+        //     ->get();
+
         $programs = $this->programModel
             ->select(
                 'programs.id',
@@ -31,11 +47,9 @@ final class SearchService
                 'programs.view_count',
                 'programs.published_at',
                 'creaters.user_icon_url',
-                'creaters.name as creater_name',
-                DB::raw('DATE(published_at) as published_date'))
+                'creaters.name as creater_name')
             ->join('creaters', 'programs.creater_id', '=', 'creaters.id')
-            ->orderBy('published_date', 'desc')
-            ->orderBy('programs.view_count', 'desc')
+            ->orderBy('published_at', 'desc')
             ->limit(config('constants.LIMIT_PROGRAM_TOPPAGE'))
             ->get();
         
