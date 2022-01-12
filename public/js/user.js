@@ -2874,7 +2874,13 @@ function ProgramShow(props) {
       setProgram = _useState2[1]; //現在見ているページ
 
 
-  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useLocation)().search; //初回読み込み持
+  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useLocation)().search; //埋め込み先の要素
+  //ここのページを参考に作った
+  //https://qiita.com/TakashiShibusawa/items/c7499f4b92ac97e4a20a
+
+  var target;
+  var write = document.write;
+  var iframe, script; //初回読み込み持
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var program_id = props.match.params.program_id;
@@ -2887,7 +2893,35 @@ function ProgramShow(props) {
     })["catch"](function () {
       console.log('通信に失敗しました');
     });
-  };
+  }; //動画を埋め込む
+
+
+  if (program.site_id) {
+    //youtube動画の埋め込み処理
+    if (program.site_id == constants['SITE_ID_YOUTUBE']) {
+      iframe = document.createElement('iframe');
+      iframe.setAttribute('src', 'https://www.youtube.com/embed/' + program.movie_id);
+      iframe.setAttribute('frameborder', '0');
+      iframe.setAttribute('allow', 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture');
+      iframe.setAttribute('allowfullscreen', '');
+      target = document.getElementById('js-program-embed');
+      target.appendChild(iframe);
+    } //ニコニコ動画の埋め込み処理
+
+
+    if (program.site_id == constants['SITE_ID_NICONICO']) {
+      document.write = function (arg) {
+        target.innerHTML = arg;
+        document.write = write;
+      };
+
+      script = document.createElement('script');
+      script.setAttribute('type', 'text/javascript');
+      script.setAttribute('src', 'http://ext.nicovideo.jp/thumb_watch/' + program.movie_id + '?w=580&h=326');
+      target = document.getElementById('js-program-embed');
+      target.appendChild(script);
+    }
+  }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_user_common_part_BreadCrumb__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("main", {
@@ -2896,10 +2930,8 @@ function ProgramShow(props) {
         paddingTop: 0
       },
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "program__embed",
-        dangerouslySetInnerHTML: {
-          __html: program.embed_code
-        }
+        id: "js-program-embed",
+        className: "program__embed"
       })
     })]
   });

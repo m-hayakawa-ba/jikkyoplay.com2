@@ -29,6 +29,7 @@ final class SearchService
                 'programs.title',
                 'programs.image_url',
                 'programs.view_count',
+                'programs.movie_id',
                 'programs.published_at',
                 'creaters.user_icon_url',
                 'creaters.name as creater_name',
