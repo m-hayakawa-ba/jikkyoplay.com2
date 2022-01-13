@@ -34,7 +34,7 @@ function HomeIndex() {
     <>
 
       {/* パンくずリスト */}
-      <BreadCrumb />
+      <BreadCrumb links={[]}/>
 
       {/* サイトロゴ */}
       <MainTitle thumbnails={thumbnails}/>

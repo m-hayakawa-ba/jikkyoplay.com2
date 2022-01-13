@@ -70,7 +70,7 @@ function ProgramShow(props) {
     <>
 
       {/* パンくずリスト */}
-      <BreadCrumb />
+      <BreadCrumb links={[{page_name: program.title, page_url: ''}]}/>
 
       <main className="main-content program" style={{paddingTop: 0}}>
 

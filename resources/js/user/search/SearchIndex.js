@@ -41,7 +41,7 @@ function SearchIndex() {
     <>
 
       {/* パンくずリスト */}
-      <BreadCrumb />
+      <BreadCrumb links={[{page_name: '検索結果', page_url: ''}]} />
 
       {/* サイトロゴ */}
       <MainTitle thumbnails={thumbnails}/>

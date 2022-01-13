@@ -54,7 +54,7 @@ function NewsIndex() {
     <>
 
       {/* パンくずリスト */}
-      <BreadCrumb />
+      <BreadCrumb links={[{page_name: 'ニュース一覧', page_url: ''}]}/>
 
       {/* サイトロゴ */}
       <MainTitle thumbnails={thumbnails}/>
