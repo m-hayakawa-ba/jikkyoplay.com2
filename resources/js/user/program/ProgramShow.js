@@ -4,6 +4,7 @@ import {Helmet} from 'react-helmet';
 import axios from 'axios';
 
 import BreadCrumb from '@/user/common_part/BreadCrumb';
+import SearchBox from '@/user/common_part/SearchBox';
 
 function ProgramShow(props) {
 
@@ -72,10 +73,115 @@ function ProgramShow(props) {
       {/* パンくずリスト */}
       <BreadCrumb links={[{page_name: program.title, page_url: ''}]}/>
 
+      {/* 検索ボックス */}
+      <div style={{height: '8px'}}></div>
+      <SearchBox />
+
       <main className="main-content program" style={{paddingTop: 0}}>
 
-      {/* 埋め込み動画 */}
-      <div id="js-program-embed" className="program__embed"></div>
+        {/* 埋め込み動画 */}
+        <div id="js-program-embed" className="program__embed"></div>
+
+        {/* 動画基本情報 */}
+        <div className="program__container">
+        
+          {/* 投稿日と再生数 */}
+          <div className="program__container__date">
+            {program.published_date} 投稿
+            ( {program.view_count}回 再生 )
+          </div>
+        
+          {/* 動画タイトル */}
+          <h1 target="blank" className="program__container__title">
+            {program.title}
+          </h1>
+        
+          {/* 投稿元サイトで見るボタン */}
+          {
+            program.site_id == constants['SITE_ID_YOUTUBE']
+              ?
+                <a href={program.movie_url} target="blank" className="btn_red standard_button program__container__site">
+                  You Tube で見る <span className="icon-external-link-alt"></span>
+                </a>
+              :
+                <a href={program.movie_url} target="blank" className="btn_blue standard_button program__container__site">
+                  ニコニコ動画 で見る <span className="icon-external-link-alt"></span>
+                </a>
+          }
+    
+          {/* 付随情報 */}
+          <div className="program__info">
+        
+            {/* 動画情報 */}
+            <table><tbody>
+              <tr>
+                <th colSpan="2">動画情報</th>
+              </tr>
+              <tr>
+                <td className="program__info__tdleft ">動画サイト&nbsp;：&nbsp;</td>
+                <td className="program__info__tdright">
+                  <Link to={ "/result?mode=advance&site_id=" + program.site_id } className="text-link-black">{ program.site_name }</Link>
+                </td>
+              </tr>
+              <tr>
+                <td className="program__info__tdleft ">声&nbsp;：&nbsp;</td>
+                <td className="program__info__tdright">
+                  <Link to={ "/result?mode=advance&voice_id=" + program.voice_id } className="text-link-black">{ program.voice_type }</Link>
+                </td>
+              </tr>
+              <tr>
+                <td className="program__info__tdleft ">ゲーム名&nbsp;：&nbsp;</td>
+                <td className="program__info__tdright">
+                  <Link to={ "/result?mode=advance&title_pfct=" + program.game_name } className="text-link-black">{ program.game_name }</Link>
+                </td>
+              </tr>
+              <tr>
+                <td className="program__info__tdleft ">ハード&nbsp;：&nbsp;</td>
+                <td className="program__info__tdright">
+                  <Link to={ "/result?mode=advance&hard_id=" + program.hard_id } className="text-link-black">{ program.hard_name }</Link>
+                </td>
+              </tr>
+              <tr>
+                <td className="program__info__tdleft ">メーカー&nbsp;：&nbsp;</td>
+                <td className="program__info__tdright">
+                  <Link to={ "/result?mode=advance&maker_id=" + program.maker_id } className="text-link-black">{ program.maker_name }</Link>
+                </td>
+              </tr>
+              <tr>
+                <td className="program__info__tdleft ">発売年&nbsp;：&nbsp;</td>
+                <td className="program__info__tdright">
+                  <Link to={ "/result?mode=advance&year=" + program.game_releace_year } className="text-link-black">{ program.game_releace_year }年</Link>
+                </td>
+              </tr>
+              <tr>
+                <td className="program__info__tdleft "></td>
+                <td className="program__info__tdright program__info__edit">
+                  <span id="js-edit-button-open">情報を修正する&nbsp;<span className="icon-edit"></span></span>
+                </td>
+              </tr>
+            </tbody></table>
+                
+            {/* チャンネル情報 */}
+            {/* <table>
+              <tr>
+                <th rowspan="3" className="program__info__channel-icon" style="background-image: url({{ $program_data['user_icon_url'] }})"></td>
+                <th>{{ $program_data['creater_name'] }}</th>
+              </tr>
+              <tr>
+                <td className="program__info__tdright">
+                  <a href="/result?mode=advance&creater_id={{ $program_data['creater_id'] }}">この実況者の他の動画を見る</a>
+                </td>
+              </tr>
+              <tr>
+                <td className="program__info__tdright">
+                  <a href="{{ $program_data['channel_url'] }}" target="blank">チャンネルページへ行く <span className="icon-external-link-alt"></span></a>
+                </td>
+              </tr>
+            </table> */}
+        
+          </div>
+    
+        </div>
 
       </main>
 

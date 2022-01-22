@@ -23,14 +23,14 @@
           {/* 2階層目以降 */}
           <br className="sp-br"/>
           <span className="breadcrumbs__here">
-            {props.links && props.links.map((link) => (
-              <>
+            {props.links && props.links.map((link, index) => (
+              <span key={index}>
                 {
                   link.page_url == ''
-                    ? <>&nbsp;＞&nbsp;{link.page_name}</>
+                    ? <span>&nbsp;＞&nbsp;{link.page_name}</span>
                     : <Link to={link.page_url}>&nbsp;＞&nbsp;{link.page_name}</Link>
                 }
-              </>
+              </span>
             ))}
           </span>
 

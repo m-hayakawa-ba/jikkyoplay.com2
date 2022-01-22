@@ -12,4 +12,8 @@ return [
     'SITE_ID_YOUTUBE' => 1,
     'SITE_ID_NICONICO' => 2,
 
+    //動画サイト名
+    'SITE_NAME_YOUTUBE' => 'You Tube',
+    'SITE_NAME_NICONICO' => 'ニコニコ動画',
+
 ];
