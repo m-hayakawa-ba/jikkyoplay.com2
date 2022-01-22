@@ -37,6 +37,10 @@ final class ProgramService
                 'voices.type as voice_type',
                 'games.name as game_name',
                 'games.releace_year as game_releace_year',
+                'creaters.id as creater_id',
+                'creaters.name as creater_name',
+                'creaters.user_id as creater_user_id',
+                'creaters.user_icon_url as creater_user_icon_url',
                 'hards.id as hard_id',
                 'hards.name as hard_name',
                 'makers.id as maker_id',
@@ -44,6 +48,7 @@ final class ProgramService
             )
             ->join('voices', 'programs.voice_id', '=', 'voices.id')
             ->join('games', 'programs.game_id', '=', 'games.id')
+            ->join('creaters', 'programs.creater_id', '=', 'creaters.id')
             ->join('hards', 'games.hard_id', '=', 'hards.id')
             ->join('makers', 'games.maker_id', '=', 'makers.id')
             ->where('programs.id', '=', $id)
@@ -54,6 +59,7 @@ final class ProgramService
         $program->published_date = $this->formatPublishedAt($program->published_at);
         $program->movie_url = $this->getMovieSiteUrl($program->site_id, $program->movie_id);
         $program->site_name = $this->getMovieSiteName($program->site_id);
+        $program->channel_url = $this->getChannelUrl($program->site_id, $program->creater_user_id);
 
         //動画情報を返して終了
         return $program;
@@ -99,6 +105,22 @@ final class ProgramService
         switch($site_id) {
             case config('constants.SITE_ID_YOUTUBE'):  return config('constants.SITE_NAME_YOUTUBE');
             case config('constants.SITE_ID_NICONICO'): return config('constants.SITE_NAME_NICONICO');
+        }
+    }
+
+    /**
+     * その投稿者のチャンネルURLを返す
+     * 
+     * @param int site_id 動画サイトid
+     * @param string user_id 投稿者のユーザーid
+     * 
+     * @return string チャンネルURL
+     */
+    private function getChannelUrl(int $site_id, string $user_id)
+    {
+        switch($site_id) {
+            case config('constants.SITE_ID_YOUTUBE'):  return "https://www.youtube.com/channel/{$user_id}";
+            case config('constants.SITE_ID_NICONICO'): return "https://www.nicovideo.jp/user/{$user_id}";
         }
     }
 }

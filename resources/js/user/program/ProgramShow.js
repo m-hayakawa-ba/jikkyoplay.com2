@@ -162,26 +162,29 @@ function ProgramShow(props) {
             </tbody></table>
                 
             {/* チャンネル情報 */}
-            {/* <table>
+            <table><tbody>
               <tr>
-                <th rowspan="3" className="program__info__channel-icon" style="background-image: url({{ $program_data['user_icon_url'] }})"></td>
-                <th>{{ $program_data['creater_name'] }}</th>
+                <th rowSpan="3" className="program__info__channel-icon" style={{ backgroundImage: 'url( ' + program.creater_user_icon_url + ' )' }}></th>
+                <th>{ program.creater_name }</th>
               </tr>
               <tr>
                 <td className="program__info__tdright">
-                  <a href="/result?mode=advance&creater_id={{ $program_data['creater_id'] }}">この実況者の他の動画を見る</a>
+                  <Link href={ "/result?mode=advance&creater_id=" + program.channel_url }>この実況者の他の動画を見る</Link>
                 </td>
               </tr>
               <tr>
                 <td className="program__info__tdright">
-                  <a href="{{ $program_data['channel_url'] }}" target="blank">チャンネルページへ行く <span className="icon-external-link-alt"></span></a>
+                  <a href={ program.channel_url } target="blank">チャンネルページへ行く <span className="icon-external-link-alt"></span></a>
                 </td>
               </tr>
-            </table> */}
+              </tbody></table>
         
           </div>
     
         </div>
+    
+        {/* 動画レビュー */}
+        <h2>レビュー</h2>
 
       </main>
 
