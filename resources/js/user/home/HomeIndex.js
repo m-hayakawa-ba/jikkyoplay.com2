@@ -10,8 +10,16 @@ import ProgramList from '@/user/common_part/ProgramList';
 
 function HomeIndex() {
 
+  //変数の初期値
+  const initialData = {newses: [
+    {url: null, id: 1, title: '', author: '', published_date: ''},
+    {url: null, id: 2, title: '', author: '', published_date: ''},
+    {url: null, id: 3, title: '', author: '', published_date: ''},
+    {url: null, id: 4, title: '', author: '', published_date: ''},
+  ]};
+
   //DBから取得したデータを管理する
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(initialData);
 
   //画面に到着したらnewsデータを読み込む
   useEffect(() => {
@@ -95,6 +103,7 @@ function HomeIndex() {
                 />
               </div>
             ))}
+            
           </div>
           <div style={{textAlign: 'right'}}>
             <Link to="/result" className="top__next-arrow">

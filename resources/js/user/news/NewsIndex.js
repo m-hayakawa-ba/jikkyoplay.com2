@@ -10,9 +10,23 @@ import SearchBox from '@/user/common_part/SearchBox';
 
 function NewsIndex() {
 
-  //newsの状態を管理する
-  const [newses, setNewses] = useState([{data: {}}]);
+  //変数の初期値
+  const initialData = {data: [
+    {url: null, id:  1, title: '', author: '', published_date: ''},
+    {url: null, id:  2, title: '', author: '', published_date: ''},
+    {url: null, id:  3, title: '', author: '', published_date: ''},
+    {url: null, id:  4, title: '', author: '', published_date: ''},
+    {url: null, id:  5, title: '', author: '', published_date: ''},
+    {url: null, id:  6, title: '', author: '', published_date: ''},
+    {url: null, id:  7, title: '', author: '', published_date: ''},
+    {url: null, id:  8, title: '', author: '', published_date: ''},
+    {url: null, id:  9, title: '', author: '', published_date: ''},
+    {url: null, id: 10, title: '', author: '', published_date: ''},
+  ]};
 
+  //newsの状態を管理する
+  const [newses, setNewses] = useState(initialData);
+  
   //現在見ているページ
   const location = useLocation().search;
 

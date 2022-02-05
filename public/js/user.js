@@ -2556,8 +2556,36 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function HomeIndex() {
-  //DBから取得したデータを管理する
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+  //変数の初期値
+  var initialData = {
+    newses: [{
+      url: null,
+      id: 1,
+      title: '',
+      author: '',
+      published_date: ''
+    }, {
+      url: null,
+      id: 2,
+      title: '',
+      author: '',
+      published_date: ''
+    }, {
+      url: null,
+      id: 3,
+      title: '',
+      author: '',
+      published_date: ''
+    }, {
+      url: null,
+      id: 4,
+      title: '',
+      author: '',
+      published_date: ''
+    }]
+  }; //DBから取得したデータを管理する
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialData),
       _useState2 = _slicedToArray(_useState, 2),
       data = _useState2[0],
       setData = _useState2[1]; //画面に到着したらnewsデータを読み込む
@@ -2730,10 +2758,72 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function NewsIndex() {
-  //newsの状態を管理する
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
-    data: {}
-  }]),
+  //変数の初期値
+  var initialData = {
+    data: [{
+      url: null,
+      id: 1,
+      title: '',
+      author: '',
+      published_date: ''
+    }, {
+      url: null,
+      id: 2,
+      title: '',
+      author: '',
+      published_date: ''
+    }, {
+      url: null,
+      id: 3,
+      title: '',
+      author: '',
+      published_date: ''
+    }, {
+      url: null,
+      id: 4,
+      title: '',
+      author: '',
+      published_date: ''
+    }, {
+      url: null,
+      id: 5,
+      title: '',
+      author: '',
+      published_date: ''
+    }, {
+      url: null,
+      id: 6,
+      title: '',
+      author: '',
+      published_date: ''
+    }, {
+      url: null,
+      id: 7,
+      title: '',
+      author: '',
+      published_date: ''
+    }, {
+      url: null,
+      id: 8,
+      title: '',
+      author: '',
+      published_date: ''
+    }, {
+      url: null,
+      id: 9,
+      title: '',
+      author: '',
+      published_date: ''
+    }, {
+      url: null,
+      id: 10,
+      title: '',
+      author: '',
+      published_date: ''
+    }]
+  }; //newsの状態を管理する
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialData),
       _useState2 = _slicedToArray(_useState, 2),
       newses = _useState2[0],
       setNewses = _useState2[1]; //現在見ているページ
