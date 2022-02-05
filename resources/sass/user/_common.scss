@@ -160,59 +160,67 @@
 //■■■■■■■■■■■■■■■■■■■■■■■■//
 
 
-    ////////////////////////////////////////////
-    //                全体設定                //
-    ////////////////////////////////////////////
-    .main {
-        position: relative;
+  ////////////////////////////////////////////
+  //                全体設定                //
+  ////////////////////////////////////////////
+  .main {
+      position: relative;
+      @include mq() {
+        padding-left: $sidebar_size;
+      }
+  }
+  .main-content {
+      width: 92%;
+      margin: 0 auto;
+      padding: 0 0 240px;
+      @include mq() {
+        margin: 0 0 64px;
+        padding: 20px 12px 40px;
+        width: 100%;
+      }  
+      &__ad {
+        width: 100%;
+        height: auto;
+        margin: 48px auto 0;
         @include mq() {
-            padding-left: $sidebar_size;
+            width: 728px;
         }
+      }
+  }  
+  //白地黒文字のテキストリンク
+  .text-link-black {
+    text-decoration: underline;
+    text-underline-position: under;
+    transition: 0.2s;
+    :hover {
+      text-shadow: 1px 1px 2px #00004060;
+      color: #22d;
     }
-    .main-content {
-        width: 92%;
-        margin: 0 auto;
-        padding: 0 0 240px;
-        @include mq() {
-            margin: 0 0 64px;
-            padding: 20px 12px 40px;
-            width: 100%;
-        }
+  }  
+  //セレクトボックス内の三角マーク
+  .select-cursor {
+    position: relative;
+    // &:after {
+    //     font-family: "Font Awesome 5 Free";
+    //     font-weight: 900;
+    //     content: '\f0d7';
+    //     position: absolute;
+    //     right: 12px;
+    //     top: 6px;
+    //     pointer-events: none;
+    // }
+  }
 
-        &__ad {
-            width: 100%;
-            height: auto;
-            margin: 48px auto 0;
-            @include mq() {
-                width: 728px;
-            }
-        }
+  //出現アニメーション
+  @keyframes show {
+    0% {
+      opacity: 0;
     }
 
-    //白地黒文字のテキストリンク
-    .text-link-black {
-        text-decoration: underline;
-        text-underline-position: under;
-        transition: 0.2s;
-        :hover {
-            text-shadow: 1px 1px 2px #00004060;
-            color: #22d;
-        }
+    100% {
+        opacity: 1;
     }
-
-    //セレクトボックス内の三角マーク
-    .select-cursor {
-        position: relative;
-        // &:after {
-        //     font-family: "Font Awesome 5 Free";
-        //     font-weight: 900;
-        //     content: '\f0d7';
-        //     position: absolute;
-        //     right: 12px;
-        //     top: 6px;
-        //     pointer-events: none;
-        // }
-    }
+  }
 
     ////////////////////////////////////////////
     //             パンくずリスト             //
@@ -1061,6 +1069,16 @@
                     background-color: #448;
                 }
             }
+            &:nth-child(1)  { div {animation: show 0.2s ease 0.00s 1 normal both running;}}
+            &:nth-child(2)  { div {animation: show 0.2s ease 0.03s 1 normal both running;}}
+            &:nth-child(3)  { div {animation: show 0.2s ease 0.06s 1 normal both running;}}
+            &:nth-child(4)  { div {animation: show 0.2s ease 0.09s 1 normal both running;}}
+            &:nth-child(5)  { div {animation: show 0.2s ease 0.12s 1 normal both running;}}
+            &:nth-child(6)  { div {animation: show 0.2s ease 0.15s 1 normal both running;}}
+            &:nth-child(7)  { div {animation: show 0.2s ease 0.18s 1 normal both running;}}
+            &:nth-child(8)  { div {animation: show 0.2s ease 0.21s 1 normal both running;}}
+            &:nth-child(9)  { div {animation: show 0.2s ease 0.24s 1 normal both running;}}
+            &:nth-child(10) { div {animation: show 0.2s ease 0.27s 1 normal both running;}}
         }
 
         &__title {

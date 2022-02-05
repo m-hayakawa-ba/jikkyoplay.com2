@@ -557,6 +557,23 @@ a {
   position: relative;
 }
 
+@-webkit-keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .breadcrumbs {
   display: flex;
   justify-content: space-between;
@@ -1429,6 +1446,46 @@ a {
 }
 .top__news__wrap:nth-child(2):hover, .top__news__wrap:nth-child(4):hover, .top__news__wrap:nth-child(6):hover, .top__news__wrap:nth-child(8):hover, .top__news__wrap:nth-child(10):hover {
   background-color: #448;
+}
+.top__news__wrap:nth-child(1) div {
+  -webkit-animation: show 0.2s ease 0s 1 normal both running;
+          animation: show 0.2s ease 0s 1 normal both running;
+}
+.top__news__wrap:nth-child(2) div {
+  -webkit-animation: show 0.2s ease 0.03s 1 normal both running;
+          animation: show 0.2s ease 0.03s 1 normal both running;
+}
+.top__news__wrap:nth-child(3) div {
+  -webkit-animation: show 0.2s ease 0.06s 1 normal both running;
+          animation: show 0.2s ease 0.06s 1 normal both running;
+}
+.top__news__wrap:nth-child(4) div {
+  -webkit-animation: show 0.2s ease 0.09s 1 normal both running;
+          animation: show 0.2s ease 0.09s 1 normal both running;
+}
+.top__news__wrap:nth-child(5) div {
+  -webkit-animation: show 0.2s ease 0.12s 1 normal both running;
+          animation: show 0.2s ease 0.12s 1 normal both running;
+}
+.top__news__wrap:nth-child(6) div {
+  -webkit-animation: show 0.2s ease 0.15s 1 normal both running;
+          animation: show 0.2s ease 0.15s 1 normal both running;
+}
+.top__news__wrap:nth-child(7) div {
+  -webkit-animation: show 0.2s ease 0.18s 1 normal both running;
+          animation: show 0.2s ease 0.18s 1 normal both running;
+}
+.top__news__wrap:nth-child(8) div {
+  -webkit-animation: show 0.2s ease 0.21s 1 normal both running;
+          animation: show 0.2s ease 0.21s 1 normal both running;
+}
+.top__news__wrap:nth-child(9) div {
+  -webkit-animation: show 0.2s ease 0.24s 1 normal both running;
+          animation: show 0.2s ease 0.24s 1 normal both running;
+}
+.top__news__wrap:nth-child(10) div {
+  -webkit-animation: show 0.2s ease 0.27s 1 normal both running;
+          animation: show 0.2s ease 0.27s 1 normal both running;
 }
 .top__news__title {
   display: block;
