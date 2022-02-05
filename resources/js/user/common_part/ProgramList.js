@@ -54,7 +54,7 @@ const ProgramList = (props) => {
   
               {/* チャンネル情報 */}
               <div className="main-caption__creater">
-                <img src={ program.user_icon_url } loading="lazy" className="main-caption__creater__icon" />
+                <img src={ program.creater_user_icon_url } loading="lazy" className="main-caption__creater__icon" />
                 <div style={{marginLeft: '4px'}}>
                   <div className="main-caption__creater__name">{ program.creater_name }</div>
                   <div className="main-caption__date">{ program.published_date } 投稿</div>

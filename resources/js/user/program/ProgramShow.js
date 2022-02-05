@@ -5,11 +5,14 @@ import axios from 'axios';
 
 import BreadCrumb from '@/user/common_part/BreadCrumb';
 import SearchBox from '@/user/common_part/SearchBox';
+import ProgramList from '@/user/common_part/ProgramList';
 
 function ProgramShow(props) {
 
   //newsの状態を管理する
-  const [program, setProgram] = useState([{data: {}}]);
+  const [program, setProgram] = useState([]);
+  const [reviews, setReviews] = useState([]);
+  const [relations, setRelations] = useState([]);
 
   //現在見ているページ
   const location = useLocation().search;
@@ -32,7 +35,9 @@ function ProgramShow(props) {
     axios
       .get('/api/program/' + program_id)
       .then(response => {
-        setProgram(response.data);
+        setProgram(response.data.program);
+        setReviews(response.data.reviews);
+        setRelations(response.data.relations);
       })
       .catch(() => {
         console.log('通信に失敗しました');
@@ -45,7 +50,7 @@ function ProgramShow(props) {
     //youtube動画の埋め込み処理
     if (program.site_id == constants['SITE_ID_YOUTUBE']) {
       iframe = document.createElement('iframe');
-      iframe.setAttribute('src', 'https://www.youtube.com/embed/' + program.movie_id);
+      iframe.setAttribute('src', 'https://www.youtube-nocookie.com/embed/' + program.movie_id);
       iframe.setAttribute('frameborder', '0');
       iframe.setAttribute('allow', 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture');
       iframe.setAttribute('allowfullscreen', '');
@@ -169,7 +174,7 @@ function ProgramShow(props) {
               </tr>
               <tr>
                 <td className="program__info__tdright">
-                  <Link href={ "/result?mode=advance&creater_id=" + program.channel_url }>この実況者の他の動画を見る</Link>
+                  <Link to={ "/result?mode=advance&creater_id=" + program.channel_url }>この実況者の他の動画を見る</Link>
                 </td>
               </tr>
               <tr>
@@ -185,6 +190,41 @@ function ProgramShow(props) {
     
         {/* 動画レビュー */}
         <h2>レビュー</h2>
+        {reviews && reviews.map((review, index) => (
+          <div className="program__review__wrapper" key={index}>
+            <div className="program__review__detail" dangerouslySetInnerHTML={{ __html: review.detail }}></div>
+            <div className="program__review__reviewer">reviewer：{ review.reviewer }</div>
+          </div>
+        ))}
+
+        {/* 関連動画 */}
+        {relations
+          ? relations.length
+          ? <h2>関連動画</h2>  //relationsが空配列でない配列が入っているとき
+          : <></>              //relationsが空配列のとき
+          : <></>              //relationsが定義されていないとき
+        }
+        <div className="program__relation">
+          {relations && relations.map((relation, index) => (
+            <ProgramList
+              program={ relation }
+              backgournd_color_pc={ index%2 ? 'white' : 'black' }
+              backgournd_color_sp={ index%2 ? 'white' : 'black' }
+              key={index}
+            />
+          ))}
+        </div>
+        <Link to={"/result?mode=advance&creater_id=" + program.creater_id } className="program__more-button standard_button btn_blue">
+          もっと見る
+        </Link>
+
+
+        {/* 戻るボタン */}
+        <div className="program_footer">
+          <Link to="/" className="standard_button btn_purple program__return">
+            戻る
+          </Link>
+        </div>
 
       </main>
 

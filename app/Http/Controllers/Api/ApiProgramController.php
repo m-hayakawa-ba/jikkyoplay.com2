@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Services\ProgramService;
+use App\Services\ReviewService;
 
 class ApiProgramController extends Controller
 {
@@ -14,6 +15,7 @@ class ApiProgramController extends Controller
      */
     public function __construct(
         private ProgramService $programService,
+        private ReviewService $reviewService,
     ) {
     }
 
@@ -26,7 +28,13 @@ class ApiProgramController extends Controller
         //動画モデルを取得
         $program = $this->programService->getProgramById($request->program_id ?? 0);
 
+        //レビューモデルを取得
+        $reviews = $this->reviewService->getReviewsByProgramId($request->program_id ?? 0);
+
+        //関連動画モデルを取得
+        $relations = $this->programService->getRelationProgramsById($request->program_id ?? 0);
+
         //取得した動画を渡す
-        return response()->json($program, 200);
+        return response()->json(compact('program', 'reviews', 'relations'), 200);
     }
 }

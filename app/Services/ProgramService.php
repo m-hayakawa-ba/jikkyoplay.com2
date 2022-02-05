@@ -6,6 +6,9 @@ use App\Models\Program;
 
 final class ProgramService
 {
+    //定数
+    const RELATION_PROGRAMS_NUM = 4;
+
     /**
      * コンストラクタ
      */
@@ -63,6 +66,49 @@ final class ProgramService
 
         //動画情報を返して終了
         return $program;
+    }
+
+    /**
+     * 動画のidから関連動画のモデルを返す
+     * 
+     * @param int $program_id
+     * @param int $num 読み込む関連動画の数
+     * 
+     * @return array
+     */
+    public function getRelationProgramsById(int $program_id, int $num = null) :?array
+    {
+        //読み込む動画の最大数を取得
+        $num = $num ?? self::RELATION_PROGRAMS_NUM;
+
+        //まず自分自身を取得
+        $program = Program::find($program_id);
+
+        //関連動画を取得
+        $programs = Program::select('id')
+            ->select(
+                'programs.id',
+                'programs.title',
+                'programs.site_id',
+                'programs.image_url',
+                'programs.view_count',
+                'programs.published_at',
+                'creaters.name as creater_name',
+                'creaters.user_icon_url as creater_user_icon_url',
+            )
+            ->where(function($query) use ($program) {
+                $query->where('programs.game_id', $program->game_id)
+                    ->orWhere('programs.creater_id', $program->creater_id);
+            })
+            ->join('creaters', 'programs.creater_id', '=', 'creaters.id')
+            ->where('programs.id', '!=', $program_id)
+            ->where('programs.flag_enabled', true)
+            ->orderBy('programs.published_at', 'DESC')
+            ->limit($num)
+            ->get()
+            ->toArray();
+
+        return $programs;
     }
 
     /**

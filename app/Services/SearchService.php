@@ -31,7 +31,7 @@ final class SearchService
                 'programs.view_count',
                 'programs.movie_id',
                 'programs.published_at',
-                'creaters.user_icon_url',
+                'creaters.user_icon_url as creater_user_icon_url',
                 'creaters.name as creater_name',
                 DB::raw('DATE(published_at) as published_date'))
             ->join('creaters', 'programs.creater_id', '=', 'creaters.id')
