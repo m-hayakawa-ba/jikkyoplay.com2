@@ -2975,6 +2975,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+var reload_embed = false;
 
 function ProgramShow(props) {
   //newsの状態を管理する
@@ -3005,7 +3006,9 @@ function ProgramShow(props) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var program_id = props.match.params.program_id;
     getProgram(program_id);
-  }, []); //DBから動画の一覧情報を取得する
+    reload_embed = true;
+  }, [props.match.params.program_id]); //別の動画を読み込むときだけ再読込させる
+  //DBから動画の一覧情報を取得する
 
   var getProgram = function getProgram(program_id) {
     axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/program/' + program_id).then(function (response) {
@@ -3018,7 +3021,7 @@ function ProgramShow(props) {
   }; //動画を埋め込む
 
 
-  if (program.site_id) {
+  if (program.site_id && reload_embed) {
     //youtube動画の埋め込み処理
     if (program.site_id == constants['SITE_ID_YOUTUBE']) {
       iframe = document.createElement('iframe');
@@ -3028,6 +3031,7 @@ function ProgramShow(props) {
       iframe.setAttribute('allowfullscreen', '');
       target = document.getElementById('js-program-embed');
       target.appendChild(iframe);
+      reload_embed = false;
     } //ニコニコ動画の埋め込み処理
 
 
