@@ -6,7 +6,8 @@ import axios from 'axios';
 import BreadCrumb from '@/user/common_part/BreadCrumb';
 import MainTitle from '@/user/common_part/MainTitle';
 import SearchBox from '@/user/common_part/SearchBox';
-import ProgramList from '@/user/common_part/ProgramList';
+import ProgramList from '@/user/program/ProgramList';
+import ReviewList from '@/user/review/ReviewList';
 
 function HomeIndex() {
 
@@ -37,7 +38,7 @@ function HomeIndex() {
         console.log('通信に失敗しました');
       });
   }
-
+console.log(data);
   return (
     <>
 
@@ -108,6 +109,27 @@ function HomeIndex() {
           <div style={{textAlign: 'right'}}>
             <Link to="/result" className="top__next-arrow">
               <span className="icon-chevron-circle-right"></span> 新着順で全動画をチェック！
+            </Link>
+          </div>
+        </div>
+
+        {/* 動画レビュー */}
+        <div className="top__margin">
+          <div className="top__subtitle">
+            <h2>
+              <Link to="/review">
+                <span className="icon-photo-video"></span> 本日のレビュー
+              </Link>
+            </h2>
+            <span>レビュー募集中！</span>
+          </div>
+    
+          <div className="top__movielist">
+            {data.review && <ReviewList review={ data.review } />}
+          </div>
+          <div style={{textAlign: 'right'}}>
+            <Link to="/review" className="top__next-arrow" style={{margin: '0 0 0 auto'}}>
+              <span className="icon-chevron-circle-right"></span> 他のレビューを見る、書く！
             </Link>
           </div>
         </div>

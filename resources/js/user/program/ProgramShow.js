@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import BreadCrumb from '@/user/common_part/BreadCrumb';
 import SearchBox from '@/user/common_part/SearchBox';
-import ProgramList from '@/user/common_part/ProgramList';
+import ProgramList from '@/user/program/ProgramList';
 
 let reload_embed = false;
 

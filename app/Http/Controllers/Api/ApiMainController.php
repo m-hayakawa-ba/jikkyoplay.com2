@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Services\SearchService;
 use App\Services\NewsService;
+use App\Services\ReviewService;
 
 class ApiMainController extends Controller
 {
@@ -16,6 +17,7 @@ class ApiMainController extends Controller
     public function __construct(
         private SearchService $searchService,
         private NewsService $newsService,
+        private ReviewService $reviewService,
     ) {
     }
 
@@ -27,7 +29,10 @@ class ApiMainController extends Controller
         //トップページに表示させるニュースを取得
         $newses = $this->newsService->getNewsesTop();
 
+        //トップページに表示させるレビューを取得
+        $review = $this->reviewService->getLatestReview();
+
         //取得したデータをJSONで返す
-        return response()->json(compact('programs', 'newses'), 200);
+        return response()->json(compact('programs', 'newses', 'review'), 200);
     }
 }
