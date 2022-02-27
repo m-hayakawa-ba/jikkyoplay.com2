@@ -17,22 +17,22 @@
           {/* トップページは必ず表記 */}
           <Link to="/">
             <Webp src="logo_jikkyoplay"/>
-            &nbsp;トップページ
+            <span className="breadcrumbs__item">
+              &nbsp;トップページ
+            </span>
           </Link>
 
           {/* 2階層目以降 */}
           <br className="sp-br"/>
-          <span className="breadcrumbs__here">
-            {props.links && props.links.map((link, index) => (
-              <span key={index}>
-                {
-                  link.page_url == ''
-                    ? <span>&nbsp;＞&nbsp;{link.page_name}</span>
-                    : <Link to={link.page_url}>&nbsp;＞&nbsp;{link.page_name}</Link>
-                }
-              </span>
-            ))}
-          </span>
+          {props.links && props.links.map((link, index) => (
+            <span key={index} className="breadcrumbs__item">
+              {
+                link.page_url == ''
+                  ? <span>&nbsp;＞&nbsp;{link.page_name}</span>
+                  : <Link to={link.page_url}>&nbsp;＞&nbsp;{link.page_name}</Link>
+              }
+            </span>
+          ))}
 
         </div>
      </div>

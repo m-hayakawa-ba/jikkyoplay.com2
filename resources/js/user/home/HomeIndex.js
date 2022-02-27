@@ -38,7 +38,7 @@ function HomeIndex() {
         console.log('通信に失敗しました');
       });
   }
-console.log(data);
+  
   return (
     <>
 

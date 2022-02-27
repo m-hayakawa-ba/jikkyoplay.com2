@@ -240,12 +240,24 @@
         }
 
         &__list {
-            width: calc(100% - 48px);
-            box-sizing: border-box;
-            font-size: 14px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+          width: calc(100% - 48px);
+          box-sizing: border-box;
+          font-size: 14px;
+          line-height: 1;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        &__item {
+          display: inline-block;
+          max-width: 50%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          color: $color-white;
+          @include mq() {
+            color: $color-black;
+          }
         }
 
         &__here {
@@ -265,11 +277,7 @@
         }
 
         & a {
-            color: $color-white;
             font-weight: bold;
-            @include mq() {
-                color: $color-black;
-            }
         }
     }
 
@@ -1033,6 +1041,7 @@
             margin: 4px 0;
             padding: 6px 8px;
             width: 100%;
+            height: 64px;
             background-color: #333;
             box-shadow: 1px 1px 2px #40404040;
             transition: 0.3s;

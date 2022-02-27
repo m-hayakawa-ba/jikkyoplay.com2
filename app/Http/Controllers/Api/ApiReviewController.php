@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Services\ProgramService;
 use App\Services\ReviewService;
 
-class ApiProgramController extends Controller
+class ApiReviewController extends Controller
 {
     /**
      * コンストラクタ
@@ -21,20 +21,14 @@ class ApiProgramController extends Controller
 
 
     /**
-     * 動画の詳細ページを表示
+     * レビューを作成する
      */
-    public function show(Request $request)
+    public function create(Request $request)
     {
         //動画モデルを取得
         $program = $this->programService->getProgramById($request->program_id ?? 0);
 
-        //レビューモデルを取得
-        $reviews = $this->reviewService->getReviewsByProgramId($request->program_id ?? 0);
-
-        //関連動画モデルを取得
-        $relations = $this->programService->getRelationProgramsById($request->program_id ?? 0);
-
         //取得した動画を渡す
-        return response()->json(compact('program', 'reviews', 'relations'), 200);
+        return response()->json(compact('program'), 200);
     }
 }

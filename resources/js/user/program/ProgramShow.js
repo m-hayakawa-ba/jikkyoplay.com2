@@ -194,12 +194,25 @@ function ProgramShow(props) {
     
         {/* 動画レビュー */}
         <h2>レビュー</h2>
-        {reviews && reviews.map((review, index) => (
-          <div className="program__review__wrapper" key={index}>
-            <div className="program__review__detail" dangerouslySetInnerHTML={{ __html: review.detail }}></div>
-            <div className="program__review__reviewer">reviewer：{ review.reviewer }</div>
-          </div>
-        ))}
+        {reviews.length
+          ? reviews.map((review, index) => (
+            <div className="program__review__wrapper" key={index}>
+              <div className="program__review__detail" dangerouslySetInnerHTML={{ __html: review.detail }}></div>
+              <div className="program__review__reviewer">reviewer：{ review.reviewer }</div>
+            </div>
+          ))
+
+          //reviewsが空配列のとき
+          : <div className="program__review__noreview">
+              この動画のレビューはまだありません。<br />
+              レビューを書いて { program.creater_name } さんを応援しよう！
+            </div>
+        }
+  
+        {/* レビューを書く */}
+        <Link to={"/review/create/" + program.id} className="program__more-button standard_button btn_blue">
+          この動画のレビューを書く
+        </Link>
 
         {/* 関連動画 */}
         {relations
@@ -218,10 +231,11 @@ function ProgramShow(props) {
             />
           ))}
         </div>
-        <Link to={"/result?mode=advance&creater_id=" + program.creater_id } className="program__more-button standard_button btn_blue">
-          もっと見る
-        </Link>
-
+        {relations.length >= 4 &&
+          <Link to={"/result?mode=advance&creater_id=" + program.creater_id } className="program__more-button standard_button btn_blue">
+            もっと見る
+          </Link>
+        }
 
         {/* 戻るボタン */}
         <div className="program_footer">

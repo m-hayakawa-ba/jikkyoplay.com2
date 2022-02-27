@@ -17,6 +17,7 @@ import HomeIndex from '@/user/home/HomeIndex';
 import NewsIndex from '@/user/news/NewsIndex';
 import SearchIndex from '@/user/search/SearchIndex';
 import ProgramShow from '@/user/program/ProgramShow';
+import ReviewCreate from '@/user/review/ReviewCreate';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/news" exact component={NewsIndex} />
           <Route path="/search" exact component={SearchIndex} />
           <Route path="/program/:program_id" exact component={ProgramShow} />
+          <Route path="/review/create/:program_id" exact component={ReviewCreate} />
         </Switch>
       </div>
       

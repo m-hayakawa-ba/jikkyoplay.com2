@@ -19,4 +19,5 @@ Route::group(['middleware' => 'api'], function(){
     Route::get('news', 'Api\ApiNewsController@index');
     Route::get('search', 'Api\ApiSearchController@index');
     Route::get('program/{program_id}', 'Api\ApiProgramController@show');
+    Route::get('review/create/{program_id}', 'Api\ApiReviewController@create');
 });

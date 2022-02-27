@@ -2064,15 +2064,16 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _user_utility_ScrollToTop__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/user/utility/ScrollToTop */ "./resources/js/user/utility/ScrollToTop.js");
 /* harmony import */ var _user_common_part_LeftNavi__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/user/common_part/LeftNavi */ "./resources/js/user/common_part/LeftNavi.js");
 /* harmony import */ var _user_home_HomeIndex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/user/home/HomeIndex */ "./resources/js/user/home/HomeIndex.js");
 /* harmony import */ var _user_news_NewsIndex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/user/news/NewsIndex */ "./resources/js/user/news/NewsIndex.js");
 /* harmony import */ var _user_search_SearchIndex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/user/search/SearchIndex */ "./resources/js/user/search/SearchIndex.js");
 /* harmony import */ var _user_program_ProgramShow__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/user/program/ProgramShow */ "./resources/js/user/program/ProgramShow.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _user_review_ReviewCreate__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/user/review/ReviewCreate */ "./resources/js/user/review/ReviewCreate.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
  // 共通js
@@ -2089,36 +2090,41 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 function App() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_user_common_part_LeftNavi__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_user_common_part_LeftNavi__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
       id: "main",
       className: "main",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Switch, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Switch, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
           path: "/",
           exact: true,
           component: _user_home_HomeIndex__WEBPACK_IMPORTED_MODULE_4__["default"]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
           path: "/news",
           exact: true,
           component: _user_news_NewsIndex__WEBPACK_IMPORTED_MODULE_5__["default"]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
           path: "/search",
           exact: true,
           component: _user_search_SearchIndex__WEBPACK_IMPORTED_MODULE_6__["default"]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
           path: "/program/:program_id",
           exact: true,
           component: _user_program_ProgramShow__WEBPACK_IMPORTED_MODULE_7__["default"]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+          path: "/review/create/:program_id",
+          exact: true,
+          component: _user_review_ReviewCreate__WEBPACK_IMPORTED_MODULE_8__["default"]
         })]
       })
     })]
   });
 }
 
-react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.BrowserRouter, {
-  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_user_utility_ScrollToTop__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(App, {})]
+react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.BrowserRouter, {
+  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_user_utility_ScrollToTop__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(App, {})]
 }), document.getElementById('app'));
 
 /***/ }),
@@ -2158,21 +2164,22 @@ var BreadCrumb = function BreadCrumb(props) {
         to: "/",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_user_utility_Webp__WEBPACK_IMPORTED_MODULE_1__["default"], {
           src: "logo_jikkyoplay"
-        }), "\xA0\u30C8\u30C3\u30D7\u30DA\u30FC\u30B8"]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+          className: "breadcrumbs__item",
+          children: "\xA0\u30C8\u30C3\u30D7\u30DA\u30FC\u30B8"
+        })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {
         className: "sp-br"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-        className: "breadcrumbs__here",
-        children: props.links && props.links.map(function (link, index) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-            children: link.page_url == '' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
-              children: ["\xA0\uFF1E\xA0", link.page_name]
-            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-              to: link.page_url,
-              children: ["\xA0\uFF1E\xA0", link.page_name]
-            })
-          }, index);
-        })
+      }), props.links && props.links.map(function (link, index) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+          className: "breadcrumbs__item",
+          children: link.page_url == '' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
+            children: ["\xA0\uFF1E\xA0", link.page_name]
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+            to: link.page_url,
+            children: ["\xA0\uFF1E\xA0", link.page_name]
+          })
+        }, index);
       })]
     })
   });
@@ -2501,7 +2508,6 @@ function HomeIndex() {
     });
   };
 
-  console.log(data);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_user_common_part_BreadCrumb__WEBPACK_IMPORTED_MODULE_3__["default"], {
       links: []
@@ -3259,7 +3265,7 @@ function ProgramShow(props) {
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
         children: "\u30EC\u30D3\u30E5\u30FC"
-      }), reviews && reviews.map(function (review, index) {
+      }), reviews.length ? reviews.map(function (review, index) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
           className: "program__review__wrapper",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
@@ -3272,6 +3278,14 @@ function ProgramShow(props) {
             children: ["reviewer\uFF1A", review.reviewer]
           })]
         }, index);
+      }) //reviewsが空配列のとき
+      : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        className: "program__review__noreview",
+        children: ["\u3053\u306E\u52D5\u753B\u306E\u30EC\u30D3\u30E5\u30FC\u306F\u307E\u3060\u3042\u308A\u307E\u305B\u3093\u3002", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("br", {}), "\u30EC\u30D3\u30E5\u30FC\u3092\u66F8\u3044\u3066 ", program.creater_name, " \u3055\u3093\u3092\u5FDC\u63F4\u3057\u3088\u3046\uFF01"]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
+        to: "/review/create/" + program.id,
+        className: "program__more-button standard_button btn_blue",
+        children: "\u3053\u306E\u52D5\u753B\u306E\u30EC\u30D3\u30E5\u30FC\u3092\u66F8\u304F"
       }), relations ? relations.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
         children: "\u95A2\u9023\u52D5\u753B"
       }) //relationsが空配列でない配列が入っているとき
@@ -3286,7 +3300,7 @@ function ProgramShow(props) {
             backgournd_color_sp: index % 2 ? 'white' : 'black'
           }, index);
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
+      }), relations.length >= 4 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
         to: "/result?mode=advance&creater_id=" + program.creater_id,
         className: "program__more-button standard_button btn_blue",
         children: "\u3082\u3063\u3068\u898B\u308B"
@@ -3303,6 +3317,89 @@ function ProgramShow(props) {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProgramShow);
+
+/***/ }),
+
+/***/ "./resources/js/user/review/ReviewCreate.js":
+/*!**************************************************!*\
+  !*** ./resources/js/user/review/ReviewCreate.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _user_common_part_BreadCrumb__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/user/common_part/BreadCrumb */ "./resources/js/user/common_part/BreadCrumb.js");
+/* harmony import */ var _user_common_part_MainTitle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/user/common_part/MainTitle */ "./resources/js/user/common_part/MainTitle.js");
+/* harmony import */ var _user_common_part_SearchBox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/user/common_part/SearchBox */ "./resources/js/user/common_part/SearchBox.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+
+var ReviewCreate = function ReviewCreate(props) {
+  //programの状態を管理する
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      program = _useState2[0],
+      setProgram = _useState2[1]; //画面に到着したらnewsデータを読み込む
+
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    getProgram();
+  }, []); //表示に必要な情報を取得し、変数にセットする
+
+  var getProgram = function getProgram() {
+    axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/review/create/' + props.match.params.program_id).then(function (response) {
+      setProgram(response.data.program);
+    })["catch"](function () {
+      console.log('通信に失敗しました');
+    });
+  };
+
+  console.log(program); //出力
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_user_common_part_BreadCrumb__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      links: [{
+        page_name: program.title,
+        page_url: '/program/' + program.id
+      }, {
+        page_name: 'レビューを書く',
+        page_url: ''
+      }]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_user_common_part_MainTitle__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      thumbnails: thumbnails
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_user_common_part_SearchBox__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("main", {
+      className: "main-content review"
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ReviewCreate);
 
 /***/ }),
 
