@@ -12,7 +12,7 @@ let reload_embed = false;
 function ProgramShow(props) {
 
   //newsの状態を管理する
-  const [program, setProgram] = useState([]);
+  let [program, setProgram] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [relations, setRelations] = useState([]);
 
@@ -28,8 +28,7 @@ function ProgramShow(props) {
 
   //初回読み込み持
   useEffect(() => {
-    let program_id = props.match.params.program_id
-    getProgram(program_id);
+    getProgram(props.match.params.program_id);
     reload_embed = true;
   }, [props.match.params.program_id]) //別の動画を読み込むときだけ再読込させる
 

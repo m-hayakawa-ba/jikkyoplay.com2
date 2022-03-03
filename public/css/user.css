@@ -2002,16 +2002,38 @@ a {
     padding-right: 16px;
   }
 }
-.review__formwrap input {
+.review__input {
   background-color: #fff;
   width: 96%;
   margin: 0 2%;
   padding: 4px 8px;
   border: solid 1px #aaa;
   border-radius: 4px;
+  transition: 0.2s;
 }
-.review__formwrap input[readonly=readonly] {
+.review__input[readonly=readonly] {
   background-color: unset;
+}
+.review__input:focus {
+  border: solid 1px #555586;
+  box-shadow: 0 0 4px #555586d6;
+}
+.review__textarea {
+  background: #fff;
+  width: 96%;
+  margin: 0 2%;
+  padding: 8px;
+  border: 1px solid #aaaaaa;
+  border-radius: 4px;
+  line-height: 1.5;
+  height: 289px;
+  resize: vertical;
+  outline: none;
+  transition: 0.2s;
+}
+.review__textarea:focus {
+  border: solid 1px #555586;
+  box-shadow: 0 0 4px #555586d6;
 }
 .review__submit-button {
   display: block;

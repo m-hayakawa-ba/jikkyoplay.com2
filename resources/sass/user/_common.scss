@@ -1617,18 +1617,41 @@
                 padding-right: 16px;
             }
         }
+    }
 
-        & input {
-            background-color: #fff;
-            width: 96%;
-            margin: 0 2%;
-            padding: 4px 8px;
-            border: solid 1px #aaa;
-            border-radius: 4px;
-            &[readonly="readonly"] {
-                background-color: unset;
-            }
-        }
+    &__input {
+      background-color: #fff;
+      width: 96%;
+      margin: 0 2%;
+      padding: 4px 8px;
+      border: solid 1px #aaa;
+      border-radius: 4px;
+      transition: 0.2s;
+      &[readonly="readonly"] {
+        background-color: unset;
+      }
+      &:focus {
+        border: solid 1px #555586;
+        box-shadow: 0 0 4px #555586d6;
+      }
+    }
+
+    &__textarea {
+      background: #fff;
+      width: 96%;
+      margin: 0 2%;
+      padding: 8px;
+      border: 1px solid #aaaaaa;
+      border-radius: 4px;
+      line-height: 1.5;
+      height: 289px;
+      resize: vertical;
+      outline: none;
+      transition: 0.2s;
+      &:focus {
+        border: solid 1px #555586;
+        box-shadow: 0 0 4px #555586d6;
+      }
     }
     
     &__submit-button {

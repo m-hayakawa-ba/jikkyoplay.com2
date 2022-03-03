@@ -11,6 +11,20 @@ const ReviewCreate = (props) => {
   //programの状態を管理する
   const [program, setProgram] = useState([]);
 
+  //レビューのフォーム用
+  const [name, setName] = useState('');  
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
+  const [review, setReview] = useState('');  
+  const handleReviewChange = (event) => {
+    setReview(event.target.value);
+  };
+  const handleSubmit = () => {
+    console.log(name);
+    console.log(review);
+  }
+
   //画面に到着したらnewsデータを読み込む
   useEffect(() => {
     getProgram();
@@ -28,8 +42,6 @@ const ReviewCreate = (props) => {
       });
   }
 
-  console.log(program);
-
   //出力
   return (
     <>
@@ -44,7 +56,28 @@ const ReviewCreate = (props) => {
       <SearchBox />
   
       <main className="main-content review">
-          
+
+        <form method="post" action="/review">
+
+          {/* 投稿者名 */}
+          <div className="review__formwrap">
+            <label>レビューを書く人の名前</label>
+            <input type="text" className="review__input" value={name} onChange={handleNameChange} />
+          </div>
+      
+          {/* レビュー本文 */}
+          <div className="review__formwrap">
+            <label>レビュー本文</label>
+            <textarea id="detail" className="review__textarea" name="detail" rows="4" value={review} onChange={handleReviewChange} />
+            <div className="review__formwrap__length">
+              文字数 <span id="review-length">0</span> ( 150文字以上 250文字以下 )
+            </div>
+          </div>
+      
+          {/* 投稿ボタン */}
+          <button type="submit" className="standard_button btn_green review__submit-button" onClick={handleSubmit}>投稿する</button>
+
+        </form>
       </main>
 
     </>

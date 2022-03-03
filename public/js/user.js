@@ -3047,8 +3047,7 @@ function ProgramShow(props) {
   var iframe, script; //初回読み込み持
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var program_id = props.match.params.program_id;
-    getProgram(program_id);
+    getProgram(props.match.params.program_id);
     reload_embed = true;
   }, [props.match.params.program_id]); //別の動画を読み込むときだけ再読込させる
   //DBから動画の一覧情報を取得する
@@ -3365,7 +3364,31 @@ var ReviewCreate = function ReviewCreate(props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
       program = _useState2[0],
-      setProgram = _useState2[1]; //画面に到着したらnewsデータを読み込む
+      setProgram = _useState2[1]; //レビューのフォーム用
+
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState4 = _slicedToArray(_useState3, 2),
+      name = _useState4[0],
+      setName = _useState4[1];
+
+  var handleNameChange = function handleNameChange(event) {
+    setName(event.target.value);
+  };
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState6 = _slicedToArray(_useState5, 2),
+      review = _useState6[0],
+      setReview = _useState6[1];
+
+  var handleReviewChange = function handleReviewChange(event) {
+    setReview(event.target.value);
+  };
+
+  var handleSubmit = function handleSubmit() {
+    console.log(name);
+    console.log(review);
+  }; //画面に到着したらnewsデータを読み込む
 
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -3378,9 +3401,8 @@ var ReviewCreate = function ReviewCreate(props) {
     })["catch"](function () {
       console.log('通信に失敗しました');
     });
-  };
+  }; //出力
 
-  console.log(program); //出力
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_user_common_part_BreadCrumb__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -3394,7 +3416,45 @@ var ReviewCreate = function ReviewCreate(props) {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_user_common_part_MainTitle__WEBPACK_IMPORTED_MODULE_3__["default"], {
       thumbnails: thumbnails
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_user_common_part_SearchBox__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("main", {
-      className: "main-content review"
+      className: "main-content review",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
+        method: "post",
+        action: "/review",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "review__formwrap",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+            children: "\u30EC\u30D3\u30E5\u30FC\u3092\u66F8\u304F\u4EBA\u306E\u540D\u524D"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            type: "text",
+            className: "review__input",
+            value: name,
+            onChange: handleNameChange
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "review__formwrap",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+            children: "\u30EC\u30D3\u30E5\u30FC\u672C\u6587"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("textarea", {
+            id: "detail",
+            className: "review__textarea",
+            name: "detail",
+            rows: "4",
+            value: review,
+            onChange: handleReviewChange
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            className: "review__formwrap__length",
+            children: ["\u6587\u5B57\u6570 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+              id: "review-length",
+              children: "0"
+            }), " ( 150\u6587\u5B57\u4EE5\u4E0A 250\u6587\u5B57\u4EE5\u4E0B )"]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+          type: "submit",
+          className: "standard_button btn_green review__submit-button",
+          onClick: handleSubmit,
+          children: "\u6295\u7A3F\u3059\u308B"
+        })]
+      })
     })]
   });
 };
